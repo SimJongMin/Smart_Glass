@@ -230,7 +230,7 @@ def join_jamos(s, ignore_err=True):
     queue = []
     new_string = ""
 
-    def flush(n=0):
+    def flush(n = 0):
         new_queue = []
         while len(queue) > n:
             new_queue.append(queue.pop())
@@ -276,4 +276,5 @@ def join_jamos(s, ignore_err=True):
             new_string += new_c
     if queue:
         new_string += flush()
+        
     return new_string
