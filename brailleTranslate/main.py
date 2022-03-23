@@ -2,52 +2,87 @@ from unicode import *
 from braille import *
 
 if __name__ == "__main__":
-    dot_text = "⠥⠠⠘⠒⠀⠫⠶⠉⠢⠠⠪⠓⠣⠕⠂"
+    dot_text = "⠘⠥⠈⠾⠨⠕⠠⠥"
     plain_text = ""
-    chojong = {}  # 지금 자음이 초성인지 종성인지 구분하기 위해 사용. /i: "초성"/i: "종성"/
+    chojong = {}  # 지금 자음이 초성인지 종성인지 구분하기 위해 사용. i: "초성" / i: "종성"
+    leng = "kor"  # kor: 한글 / eng: 영어 / num: 숫자
     
     dtl = list(dot_text)  # 점자 문자열 처리를 쉽게 하기 위해 리스트로 바꿈.
     while dtl:
         try:
             if dtl[0] in space.keys():
                 plain_text = plain_text + space[dtl[0]]
+                if leng == "num":  # 숫자는 영어와 다르게 끝을 알리는 점자가 없다. 그래서 점자가 영어나 한글과 겹칠수도 있는데 그럴 경우 공백으로 구분한다.
+                    leng = "kor"
                 dtl.pop(0)
                 continue
-            if len(dtl) >= 2: 
-                if dtl[0] + dtl[1] in yakeo.keys():
-                    plain_text = plain_text + yakeo[dtl[0] + dtl[1]]
-                    dtl.pop(0)
+            
+            if dtl[0] in english.keys():
+                if english[dtl[0]] == "영어 시작":
+                    leng = "eng"
                     dtl.pop(0)
                     continue
-                elif dtl[0] + dtl[1] in chosung.keys():
-                    plain_text = plain_text + chosung[dtl[0] + dtl[1]]
+                elif english[dtl[0]] == "영어 끝":
+                    leng = "kor"
                     dtl.pop(0)
+                    continue
+            
+            if dtl[0] in number.keys(): 
+                if number[dtl[0]] == "숫자 시작":
+                    leng = "num"
+                    dtl.pop(0)
+                    continue
+            
+            if leng == "eng":
+                if dtl[0] not in english.keys():
+                    dtl.pop(0)
+                    continue
+                plain_text = plain_text + english[dtl[0]]
+                dtl.pop(0)
+            
+            if leng == "num":
+                plain_text = plain_text + number[dtl[0]]
+                dtl.pop(0)
+            
+            if leng == "kor":
+                if len(dtl) >= 2: 
+                    if dtl[0] + dtl[1] in yakeo.keys():
+                        plain_text = plain_text + yakeo[dtl[0] + dtl[1]]
+                        dtl.pop(0)
+                        dtl.pop(0)
+                        continue
+                    elif dtl[0] + dtl[1] in chosung.keys():
+                        plain_text = plain_text + chosung[dtl[0] + dtl[1]]
+                        dtl.pop(0)
+                        dtl.pop(0)
+                        chojong[len(plain_text) - 1] = "초성"
+                        continue
+                    elif dtl[0] + dtl[1] in joongsung.keys():
+                        plain_text = plain_text + joongsung[dtl[0] + dtl[1]]
+                        dtl.pop(0)
+                        dtl.pop(0)
+                        continue
+                if dtl[0] in yakeo.keys():
+                    plain_text = plain_text + yakeo[dtl[0]]
+                    if yakeo[dtl[0]][-1] in ("ㄱ", "ㄴ", "ㄹ", "ㅇ", "ㅆ"):
+                        chojong[len(plain_text) - 1] = "종성"
+                    dtl.pop(0)
+                elif dtl[0] in chosung.keys():
+                    plain_text = plain_text + chosung[dtl[0]]
                     dtl.pop(0)
                     chojong[len(plain_text) - 1] = "초성"
-                    continue
-                elif dtl[0] + dtl[1] in joongsung.keys():
-                    plain_text = plain_text + joongsung[dtl[0] + dtl[1]]
+                elif dtl[0] in joongsung.keys():
+                    plain_text = plain_text + joongsung[dtl[0]]
                     dtl.pop(0)
+                elif dtl[0] in jongsung.keys():
+                    plain_text = plain_text + jongsung[dtl[0]]
                     dtl.pop(0)
-                    continue
-            if dtl[0] in yakeo.keys():
-                plain_text = plain_text + yakeo[dtl[0]]
-                if yakeo[dtl[0]][-1] in ("ㄱ", "ㄴ", "ㄹ", "ㅇ", "ㅆ"):
                     chojong[len(plain_text) - 1] = "종성"
-                dtl.pop(0)
-            elif dtl[0] in chosung.keys():
-                plain_text = plain_text + chosung[dtl[0]]
-                dtl.pop(0)
-                chojong[len(plain_text) - 1] = "초성"
-            elif dtl[0] in joongsung.keys():
-                plain_text = plain_text + joongsung[dtl[0]]
-                dtl.pop(0)
-            elif dtl[0] in jongsung.keys():
-                plain_text = plain_text + jongsung[dtl[0]]
-                dtl.pop(0)
-                chojong[len(plain_text) - 1] = "종성"
         except:
-            pass
+            if leng == "num":
+                leng = "kor"
+            else:
+                pass
     
     print(list(plain_text))
     print(chojong)
@@ -119,11 +154,15 @@ if __name__ == "__main__":
 ⠚⠍⠰⠾⠨⠹⠀⠠⠕⠫⠁⠨⠶⠗⠟⠺⠀⠘⠕⠩⠂⠵⠀⠈⠍⠠⠕⠃⠙⠎⠠⠝⠒⠓⠪⠐⠮⠀⠉⠎⠢⠉⠵⠊ - 후천적 시각장애인의 비율은 구십퍼센트를 넘는다 ㅇ
 
 ⠋⠥⠊⠪⠨⠻⠐⠳⠮⠀⠠⠕⠂⠚⠗⠶⠚⠒⠊ - 코드졍렬을 실행한다 ㅇ
+
+⠴⠠⠠⠊⠃⠍⠲⠀⠋⠎⠢⠙⠩⠓⠎ - IBM 컴퓨터 ㅇ
+
+⠨⠿⠐⠥⠀⠼⠁⠫⠧⠀⠨⠿⠐⠥⠀⠼⠃⠫ - 종로 1가와 종로 2가 ㅇ
 ------------------------------------------------------------------------------------------------------------------------------
 ㄼ, ㅀ, ㄶ 등등 겹받침 안되는건 unicode.py에 join_jamos()를 수정해야 한다.
 근데 저건 나도 어디서 뜯어온거라 수정이 가능할지 어떨지는 모르겠다.
 
-숫자 - 처리 해야함.
-영어 - 처리 해야함.
+숫자 - 아마 다한듯?
+영어 - 모든 대문자를 소문자로 처리하도록 하였음. 대문자 필요없잖아?
 문장부호 - 처리 할필요 없다고 생각하나, 문장부호가 들어간 점자를 다른식으로 해석해서 이상하게 나올 가능성이 큼. 그래서 처리 하긴 해야할듯?
 """
