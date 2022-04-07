@@ -2,8 +2,8 @@ from unicode import *
 from braille import *
 
 if __name__ == "__main__":
-    dot_text = "⠘⠥⠈⠾⠨⠕⠠⠥"
-    plain_text = ""
+    dot_text = "⠼⠁⠁⠏⠂⠀⠼⠁⠁⠕⠂⠵⠀⠠⠘⠗⠠⠘⠗⠐⠥⠀⠠⠘⠣⠂⠐⠕⠑⠹⠉⠵⠀⠊⠝⠕"
+    plain_text = []
     chojong = {}  # 지금 자음이 초성인지 종성인지 구분하기 위해 사용. i: "초성" / i: "종성"
     leng = "kor"  # kor: 한글 / eng: 영어 / num: 숫자
     
@@ -11,7 +11,7 @@ if __name__ == "__main__":
     while dtl:
         try:
             if dtl[0] in space.keys():
-                plain_text = plain_text + space[dtl[0]]
+                plain_text.append(space[dtl[0]])
                 if leng == "num":  # 숫자는 영어와 다르게 끝을 알리는 점자가 없다. 그래서 점자가 영어나 한글과 겹칠수도 있는데 그럴 경우 공백으로 구분한다.
                     leng = "kor"
                 dtl.pop(0)
@@ -37,45 +37,60 @@ if __name__ == "__main__":
                 if dtl[0] not in english.keys():
                     dtl.pop(0)
                     continue
-                plain_text = plain_text + english[dtl[0]]
+                plain_text.append(english[dtl[0]])
                 dtl.pop(0)
             
             if leng == "num":
-                plain_text = plain_text + number[dtl[0]]
+                plain_text.append(number[dtl[0]])
                 dtl.pop(0)
             
             if leng == "kor":
                 if len(dtl) >= 2: 
                     if dtl[0] + dtl[1] in yakeo.keys():
-                        plain_text = plain_text + yakeo[dtl[0] + dtl[1]]
+                        plain_text.append(yakeo[dtl[0] + dtl[1]])
                         dtl.pop(0)
                         dtl.pop(0)
                         continue
-                    elif dtl[0] + dtl[1] in chosung.keys():
-                        plain_text = plain_text + chosung[dtl[0] + dtl[1]]
-                        dtl.pop(0)
-                        dtl.pop(0)
-                        chojong[len(plain_text) - 1] = "초성"
-                        continue
+                    # elif dtl[0] + dtl[1] in chosung.keys():
+                    #     plain_text = plain_text + chosung[dtl[0] + dtl[1]]
+                    #     dtl.pop(0)
+                    #     dtl.pop(0)
+                    #     chojong[len(plain_text) - 1] = "초성"
+                    #     continue
                     elif dtl[0] + dtl[1] in joongsung.keys():
-                        plain_text = plain_text + joongsung[dtl[0] + dtl[1]]
+                        plain_text.append(joongsung[dtl[0] + dtl[1]])
                         dtl.pop(0)
                         dtl.pop(0)
                         continue
                 if dtl[0] in yakeo.keys():
-                    plain_text = plain_text + yakeo[dtl[0]]
+                    if len(plain_text) > 0:
+                        if plain_text[-1] == "ㅅ" and yakeo[dtl[0]] in ("ㄱㅏ", "ㄷㅏ", "ㅂㅏ", "ㅅㅏ", "ㅈㅏ"):
+                            plain_text.pop()
+                            plain_text.extend(list(split_syllables(chr(ord(join_jamos(yakeo[dtl[0]])) + 588))))
+                            dtl.pop(0)
+                            chojong.popitem()
+                            continue
+                    plain_text.extend(list(yakeo[dtl[0]]))
                     if yakeo[dtl[0]][-1] in ("ㄱ", "ㄴ", "ㄹ", "ㅇ", "ㅆ"):
                         chojong[len(plain_text) - 1] = "종성"
                     dtl.pop(0)
                 elif dtl[0] in chosung.keys():
-                    plain_text = plain_text + chosung[dtl[0]]
+                    if len(plain_text) > 0:
+                        if plain_text[-1] == "ㅅ" and chosung[dtl[0]] in ("ㄱ", "ㄷ", "ㅂ", "ㅅ", "ㅈ"):
+                            plain_text.pop()
+                            plain_text.append(chr(ord(chosung[dtl[0]]) + 1))
+                            dtl.pop(0)
+                            chojong.popitem()
+                            chojong[len(plain_text) - 1] = "초성"
+                            continue    
+                    plain_text.append(chosung[dtl[0]])
                     dtl.pop(0)
                     chojong[len(plain_text) - 1] = "초성"
                 elif dtl[0] in joongsung.keys():
-                    plain_text = plain_text + joongsung[dtl[0]]
+                    plain_text.append(joongsung[dtl[0]])
                     dtl.pop(0)
                 elif dtl[0] in jongsung.keys():
-                    plain_text = plain_text + jongsung[dtl[0]]
+                    plain_text.append(jongsung[dtl[0]])
                     dtl.pop(0)
                     chojong[len(plain_text) - 1] = "종성"
         except:
@@ -84,10 +99,10 @@ if __name__ == "__main__":
             else:
                 pass
     
-    print(list(plain_text))
+    print(plain_text)
     print(chojong)
     
-    ptl = list(plain_text)  # 만들어진 한글 문자열의 후처리를 위해 리스트로 바꿈.
+    ptl = plain_text
     i = 0  # ptl에 접근하기 위함.
     k = 0  # 인덱스값이 계속 변하는 ptl이기 때문에, 초기 ptl의 인덱스로 접근하기 위한 변수.
     while i < len(ptl):
@@ -144,8 +159,6 @@ if __name__ == "__main__":
 ⠣⠘⠎⠨⠕⠫⠀⠘⠶⠝⠀⠊⠮⠎⠫⠠⠱⠌⠊ - 아버지가 방에 들어가셨다 ㅇ
 
 ⠚⠉⠮⠝⠠⠎⠀⠘⠕⠫⠀⠉⠗⠐⠱⠀⠧⠬ - 하늘에서 비가 내려 와요 ㅇ
-
-⠕⠨⠝⠒⠀⠈⠧⠗⠒⠰⠣⠒⠴⠵⠊⠝⠀⠇⠐⠣⠶⠠⠊⠣⠍⠗⠒⠀⠨⠎⠘⠎⠐⠱⠌⠉⠵⠊⠝ - 이젠 괜찮은데 사랑따윈 저버렸는데 ㅇ
 
 ⠚⠡⠨⠗⠀⠠⠕⠫⠁⠵⠀⠥⠚⠍⠕⠃⠉⠕⠊ - 현재 시각은 오후입니다 ㅇ
 
