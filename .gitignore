@@ -9,6 +9,9 @@ bralleTranslate/__pycache__/
 BrailleCNN/EnBrailleCode/PresetData/
 BrailleCNN/korBrailleCode/PresetData/
 
+#.DS_Store 제외
+.DS_Store
+
 # C extensions
 *.so
 
