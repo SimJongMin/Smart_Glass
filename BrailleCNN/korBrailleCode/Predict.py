@@ -26,23 +26,44 @@ class Predic():
     
     def composit(self):
         for x in range(0,len(self.single_result)):
-            if(self.single_result[x]==19 and self.single_result[x-1]==29):
+            if(self.single_result[x]==19 and self.single_result[x-1]==29):          #ㅟ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,100)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==20):
+            elif(self.single_result[x]==19 and self.single_result[x-1]==20):        #ㅒ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,101)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==26):
+            elif(self.single_result[x]==19 and self.single_result[x-1]==26):         #ㅙ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,102)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==30):
+            elif(self.single_result[x]==19 and self.single_result[x-1]==30):         #ㅞ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,103)
-            elif(self.single_result[x]==21 and self.single_result[x-1]==36):
+            elif(self.single_result[x]==21 and self.single_result[x-1]==36):        #것 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,104)
+            elif(self.single_result[x]==21 and self.single_result[x-1]==2):         #그래서
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,105)
+            elif(self.single_result[x]==37 and self.single_result[x-1]==2):         #그러나 
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,106)
+            elif(self.single_result[x]==3 and self.single_result[x-1]==2):          #그러면 
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,107)
+            elif(self.single_result[x]==7 and self.single_result[x-1]==2):          # 그러므로
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,108)
+            elif(self.single_result[x]==22 and self.single_result[x-1]==2):         # 그런데 
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,109)
+            elif(self.single_result[x]==25 and self.single_result[x-1]==2):         #그리고 
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,110)
+            elif(self.single_result[x]==23 and self.single_result[x-1]==2):         #그리하여 
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,111)
             else:
-                self.result.append(self.single_result[x])
+                self.result.append(self.single_result[x])                           #일반 점자 
         return self.result        
 
 
