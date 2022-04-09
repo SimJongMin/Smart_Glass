@@ -1,5 +1,7 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+BrailleCNN/EnBrailleCode/__pycache__/
+BrailleCNN/korBrailleCode/__pycache__/
+bralleTranslate/__pycache__/
 *.py[cod]
 *$py.class
 
