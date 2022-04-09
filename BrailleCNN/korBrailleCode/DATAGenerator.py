@@ -2,13 +2,13 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 def data_ready():
-    images_dir = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/'
+    images_dir = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/'     #FIXME: fix path to relative path
 
     datagen = ImageDataGenerator(
                                 rotation_range=5,
                                 shear_range=5,
                                 validation_split=0.2
-    ) #20%를 검증모델로 사용.
+    ) #COMMENT : 20%를 검증모델로 사용.
 
     train_generator = datagen.flow_from_directory(images_dir,
                                                   target_size=(36,42),

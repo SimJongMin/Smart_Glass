@@ -16,10 +16,9 @@ import operator
 #keraserr.fixerr()
 
 ## 이미지 준비 *한번 실행되면 다시 실행할 필요 없음.
-# import Rdy_image
-# Rdy_image.Preset()
-# all_new()
-# single_new("zz")
+import Rdy_image
+Rdy_image.Preset()
+
 
 
 ## data Generator 테스트, 검증 데이터 생성
@@ -66,11 +65,4 @@ def action(path):
 
 
 action(path)
-
-
-
-
-
-
-
 

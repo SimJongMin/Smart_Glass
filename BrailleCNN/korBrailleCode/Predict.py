@@ -2,6 +2,7 @@ import operator
 import numpy as np
 import cv2
 
+# COMMENT: Alphabet순서대로 출력하는 함수 - EN에서 사용
 # def alpha(num):
 #     if num == 26:
 #         return  ' '
@@ -26,44 +27,44 @@ class Predic():
     
     def composit(self):
         for x in range(0,len(self.single_result)):
-            if(self.single_result[x]==19 and self.single_result[x-1]==29):          #ㅟ
+            if(self.single_result[x]==19 and self.single_result[x-1]==29):           #COMMENT : ㅟ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,100)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==20):        #ㅒ
+            elif(self.single_result[x]==19 and self.single_result[x-1]==20):         #COMMENT : ㅒ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,101)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==26):         #ㅙ
+            elif(self.single_result[x]==19 and self.single_result[x-1]==26):         #COMMENT : ㅙ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,102)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==30):         #ㅞ
+            elif(self.single_result[x]==19 and self.single_result[x-1]==30):         #COMMENT : ㅞ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,103)
-            elif(self.single_result[x]==21 and self.single_result[x-1]==36):        #것 
+            elif(self.single_result[x]==21 and self.single_result[x-1]==36):         #COMMENT : 것 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,104)
-            elif(self.single_result[x]==21 and self.single_result[x-1]==2):         #그래서
+            elif(self.single_result[x]==21 and self.single_result[x-1]==2):          #COMMENT : 그래서
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,105)
-            elif(self.single_result[x]==37 and self.single_result[x-1]==2):         #그러나 
+            elif(self.single_result[x]==37 and self.single_result[x-1]==2):          #COMMENT : 그러나 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,106)
-            elif(self.single_result[x]==3 and self.single_result[x-1]==2):          #그러면 
+            elif(self.single_result[x]==3 and self.single_result[x-1]==2):           #COMMENT : 그러면 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,107)
-            elif(self.single_result[x]==7 and self.single_result[x-1]==2):          # 그러므로
+            elif(self.single_result[x]==7 and self.single_result[x-1]==2):           #COMMENT : 그러므로
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,108)
-            elif(self.single_result[x]==22 and self.single_result[x-1]==2):         # 그런데 
+            elif(self.single_result[x]==22 and self.single_result[x-1]==2):          #COMMENT : 그런데 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,109)
-            elif(self.single_result[x]==25 and self.single_result[x-1]==2):         #그리고 
+            elif(self.single_result[x]==25 and self.single_result[x-1]==2):          #COMMENT : 그리고 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,110)
-            elif(self.single_result[x]==23 and self.single_result[x-1]==2):         #그리하여 
+            elif(self.single_result[x]==23 and self.single_result[x-1]==2):          #COMMENT : 그리하여 
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,111)
             else:
-                self.result.append(self.single_result[x])                           #일반 점자 
+                self.result.append(self.single_result[x])                            #COMMENT : 일반 점자 
         return self.result        
 
 
@@ -82,6 +83,7 @@ def check_acc(my_list,index,value):
     print(value)
 
 
+#COMMENT : 예측한 인덱스가 어떤 글자인지 출력하는 함수 - EN에서 사용
 # def chk_trans():
 #     for i in range(0,70):
 #         print(str(i) + ':' + korAlphabet[i],end='  ')

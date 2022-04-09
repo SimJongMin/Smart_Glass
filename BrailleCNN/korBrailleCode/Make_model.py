@@ -7,7 +7,7 @@ from keras.callbacks import ModelCheckpoint,ReduceLROnPlateau,EarlyStopping
 def Make_model(train,val):
     K.clear_session()
 
-    model_ckpt = ModelCheckpoint('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/KorBrailleNet.h5',save_best_only=True)
+    model_ckpt = ModelCheckpoint('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/KorBrailleNet.h5',save_best_only=True)      #FIXME: fix path to relative path
     reduce_lr = ReduceLROnPlateau(patience=8,verbose=1)
     early_stop = EarlyStopping(patience=5,verbose=2,monitor='accuracy')
 
@@ -34,7 +34,7 @@ def Make_model(train,val):
     x = L.ReLU()(x)
     x = L.Dense(128,kernel_regularizer=l2(2e-4))(x)
     x = L.ReLU()(x)
-    x = L.Dense(62,activation='softmax')(x)
+    x = L.Dense(63,activation='softmax')(x)
 
     model = Model(entry,x)
     model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
@@ -45,7 +45,7 @@ def Make_model(train,val):
 
 
 def print_acc_loss(history):
-    # 평가 결과 도식화
+    #COMMENT : 평가 결과 도식화
     import matplotlib.pyplot as plt
     fig, loss_ax = plt.subplots(figsize=(10, 5))
     acc_ax = loss_ax.twinx()

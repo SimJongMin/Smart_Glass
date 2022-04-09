@@ -15,12 +15,12 @@ class img_devide():
 
     def create_dir(self):
         try:
-            os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a/')
+            os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a/')     #FIXME: fix path to relative path
             print('create new dir')
         except:
             print('already exist')
             pass
-        self.path = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a'
+        self.path = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a'        #FIXME: fix path to relative path
 
     def devide_img(self):
         self.img = Image.open(self.img_path)
