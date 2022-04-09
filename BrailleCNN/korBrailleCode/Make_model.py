@@ -12,12 +12,21 @@ def Make_model(train,val):
     early_stop = EarlyStopping(patience=5,verbose=2,monitor='accuracy')
 
     entry = L.Input(shape=(50,58,3))
-    x = L.SeparableConv2D(128, (10,10), activation='relu', padding='same')(entry)
+    x = L.SeparableConv2D(64, (5,5), activation='relu', padding='same')(entry)
     x = L.MaxPooling2D((2, 2))(x)
-    x = L.SeparableConv2D(256,(10,10),activation='relu',padding ='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.SeparableConv2D(128, (5,5), activation='relu', padding='same')(entry)
+    x = L.MaxPooling2D((2, 2))(x)
+    x = L.BatchNormalization()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.SeparableConv2D(256,(5,5),activation='relu',padding ='same')(x)
     x = L.MaxPooling2D((2,2))(x)
-    x = L.SeparableConv2D(512,(10,10),activation='relu',padding ='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.SeparableConv2D(512,(5,5),activation='relu',padding ='same')(x)
     x = L.GlobalMaxPooling2D()(x)
+    x = L.Dropout(0.5)(x)
 
     x = L.Dense(512)(x)
     x = L.LeakyReLU()(x)
@@ -25,13 +34,14 @@ def Make_model(train,val):
     x = L.ReLU()(x)
     x = L.Dense(128,kernel_regularizer=l2(2e-4))(x)
     x = L.ReLU()(x)
-    x = L.Dense(71,activation='softmax')(x)
+    x = L.Dense(62,activation='softmax')(x)
 
     model = Model(entry,x)
     model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
 
-    history = model.fit_generator(train,validation_data=val,epochs=60, callbacks=[model_ckpt,reduce_lr,early_stop],verbose=2)                # 여기서 매번 실패한다.
+    history = model.fit_generator(train,validation_data=val,epochs=60, callbacks=[model_ckpt,reduce_lr,early_stop],verbose=2)                
     return history
+
 
 
 def print_acc_loss(history):

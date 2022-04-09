@@ -19,7 +19,8 @@ def data_ready():
                                                 subset='validation')
     return train_generator, val_generator
 
-def load_image(img_path):
+
+def load_image_single(img_path):
     images_dir = img_path
     datagen = ImageDataGenerator()
     real_generator = datagen.flow_from_directory(images_dir,

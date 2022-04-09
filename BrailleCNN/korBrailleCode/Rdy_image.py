@@ -3,13 +3,13 @@ from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 import os
 from shutil import copyfile
 
-
 korAlphabet=[
-    "ㄱCho","ㄴCho","ㄷCho","ㄹCho","ㅁCho","ㅂCho","ㅅCho","ㅈCho","ㅊCho","ㅋCho","ㅌCho","ㅍCho","ㅎCho","multiCho","space",
-    "ㄱJong","ㄴJong","ㄷJong","ㄹJong","ㅁJong","ㅂJong","ㅅJong","ㅇJong","ㅈJong","ㅋJong","ㅌJong","ㅍJong","ㅎJong",
+    "ㄱCho","ㄹCho","ㅅCho","ㅊCho","space",
+    "ㄱJong","ㄴJong","ㄷJong","ㄹJong","ㅁJong","ㅂJong","ㅅJong","ㅇJong","ㅈJong","ㅋJong","ㅌJong","ㅍJong","ㅎJong","붙임","것1",
     "ㅏ","ㅐ","ㅑ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅚ","ㅛ","ㅜ","ㅝ","ㅠ","ㅡ","ㅢ","ㅣ",
-    "가","나","다","마","바","사","ㅆ","억","언","얼","연","열","영","옥","온","옹","운","울","은","을","인","자","카","타","파","하"
+    "가","나","다","마","바","사","억","언","얼","연","열","영","옥","온","옹","운","울","은","을","인","자","카","타","파","하"
 ]
+
 
 datagen = ImageDataGenerator(
         rotation_range=5,
@@ -22,9 +22,11 @@ datagen = ImageDataGenerator(
 
 def mkdir_alphabet():
     for kor in korAlphabet: 
-        os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/' + kor)
-
-
+        try:
+            os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/' + kor)
+        except:
+            print("already exist")
+            pass
 
 
 def all_new():
@@ -36,9 +38,9 @@ def all_new():
         i = 0
         for batch in datagen.flow(x, batch_size=1, save_to_dir='E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/ConvertData/', save_prefix=kor, save_format='jpg'):
             i += 1
-            if i > 29:
+            if i > 99:
                 count+=1
-                break  # 이미지 30장을 생성하고 마칩니다
+                break  # 이미지 100장을 생성하고 마칩니다
 
 
 def split_data():
@@ -49,9 +51,8 @@ def split_data():
         copyfile(rootdir+file, 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/' + letter + '/' + file)
         os.remove(rootdir+file)
 
+
 def Preset():
     mkdir_alphabet()
     all_new()
     split_data()
-    
-    

@@ -16,9 +16,9 @@ class img_devide():
     def create_dir(self):
         try:
             os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a/')
-            # print('create new dir')
+            print('create new dir')
         except:
-            # print('already exist')
+            print('already exist')
             pass
         self.path = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a'
 
@@ -28,8 +28,7 @@ class img_devide():
         cropped_img = self.img.crop(area)
         cropped_img.save(self.path + '/'+str(self.call_num)+'.jpg')
         self.call_num+=1
-
-
+    
     def set_image(self):
         self.img = Image.open(self.img_path)
         self.width = self.img.size[0]

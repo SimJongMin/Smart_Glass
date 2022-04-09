@@ -2,13 +2,6 @@ import operator
 import numpy as np
 import cv2
 
-# korAlphabet=[
-#     "ㄱCho","ㄴCho","ㄷCho","ㄹCho","ㅁCho","ㅂCho","ㅅCho","ㅈCho","ㅊCho","ㅋCho","ㅌCho","ㅍCho","ㅎCho","multiCho",
-#     "ㄱJong","ㄴJong","ㄷJong","ㄹJong","ㅁJong","ㅂJong","ㅅJong","ㅇJong","ㅈJong","ㅋJong","ㅌJong","ㅍJong","ㅎJong",
-#     "ㅏ","ㅐ","ㅑ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅚ","ㅛ","ㅜ","ㅝ","ㅠ","ㅡ","ㅢ","ㅣ",
-#     "가","나","다","마","바","사","ㅆ","억","언","얼","연","열","영","옥","온","옹","운","울","은","을","인","자","카","타","파","하"
-# ]
-
 # def alpha(num):
 #     if num == 26:
 #         return  ' '
@@ -18,15 +11,55 @@ import cv2
 
 class Predic():
     result = []
-    def Predict(self,model,real):
+    single_result=[]
+    single_index=[]
+    count=0
+    
+    def Predict_single(self,model,real):
         my_list = model.predict(real)
         index, value = max(enumerate(my_list[0]), key=operator.itemgetter(1))
-        print(index)
-        self.result.append(index)
-        return self.result
+        check_acc(my_list,index,value)
+        self.single_index.append(self.count)
+        self.single_result.append(index)
+        self.count+=1
+        return self.single_index, self.single_result
+    
+    def composit(self):
+        for x in range(0,len(self.single_result)):
+            if(self.single_result[x]==19 and self.single_result[x-1]==29):
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,100)
+            elif(self.single_result[x]==19 and self.single_result[x-1]==20):
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,101)
+            elif(self.single_result[x]==19 and self.single_result[x-1]==26):
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,102)
+            elif(self.single_result[x]==19 and self.single_result[x-1]==30):
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,103)
+            elif(self.single_result[x]==21 and self.single_result[x-1]==36):
+                self.result.remove(self.single_result[x-1])
+                self.result.insert(x-1,104)
+            else:
+                self.result.append(self.single_result[x])
+        return self.result        
+
 
     def reset(self):
         self.result = []
+        self.count=0
+
+
+def check_acc(my_list,index,value):
+    print("----------Predict result----------")
+    print(my_list)
+    print("----------max accuracy----------")
+    print("index : ",end="")
+    print(index,end="          ")
+    print("value :",end=" ")
+    print(value)
+
 
 # def chk_trans():
 #     for i in range(0,70):
