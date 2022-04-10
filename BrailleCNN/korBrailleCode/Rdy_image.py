@@ -4,7 +4,7 @@ import os
 from shutil import copyfile
 
 korAlphabet=[
-    "ㄱCho","ㄹCho","ㅅCho","ㅊCho","space",
+    "ㄱCho","ㄹCho","ㅅCho","ㅊCho","space","ㅊJong",
     "ㄱJong","ㄴJong","ㄷJong","ㄹJong","ㅁJong","ㅂJong","ㅅJong","ㅇJong","ㅈJong","ㅋJong","ㅌJong","ㅍJong","ㅎJong","붙임","것1","수표",
     "ㅏ","ㅐ","ㅑ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅚ","ㅛ","ㅜ","ㅝ","ㅠ","ㅡ","ㅢ","ㅣ",
     "가","나","다","마","바","사","억","언","얼","연","열","영","옥","온","옹","운","울","은","을","인","자","카","타","파","하"

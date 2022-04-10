@@ -26,7 +26,7 @@ train_generator, val_generator = DATAGenerator.data_ready()
 
 
 
-#COMMENT : KorBrailleNet.h5 파일이 없는 경우 or korBrailleImage 내부의 학습데이터가 변경된 경우 실행한다.
+# COMMENT : KorBrailleNet.h5 파일이 없는 경우 or korBrailleImage 내부의 학습데이터가 변경된 경우 실행한다.
 # hist = Make_model.Make_model(train_generator,val_generator)           
 # Make_model.print_acc_loss(hist)                   
 
