@@ -9,6 +9,9 @@ bralleTranslate/__pycache__/
 BrailleCNN/EnBrailleCode/PresetData/
 BrailleCNN/korBrailleCode/PresetData/
 
+#TEST파일 제외
+BrailleCNN/korBrailleCode/test.py
+
 #.DS_Store 제외
 .DS_Store
 
