@@ -26,7 +26,7 @@ train_generator, val_generator = DATAGenerator.data_ready()
 
 
 
-#COMMENT : KorBrailleNet.h5 파일이 없는 경우 or input data가 변경된 경우 실행한다.
+#COMMENT : KorBrailleNet.h5 파일이 없는 경우 or korBrailleImage 내부의 학습데이터가 변경된 경우 실행한다.
 # hist = Make_model.Make_model(train_generator,val_generator)           
 # Make_model.print_acc_loss(hist)                   
 
@@ -34,16 +34,16 @@ train_generator, val_generator = DATAGenerator.data_ready()
 #COMMENT: BrailleNet에 저장된 모델을 불러옴.
 #COMMENT: acc확인
 model = Load_model.load_model()
-acc = Load_model.acc_chk(model,val_generator)   # 
+acc = Load_model.acc_chk(model,val_generator)
 
 
 #COMMENT: 사진 데이터 불러오기, 예측
-path_single = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/real/위아더웨더.jpg'        #FIXME: fix path to relative path
+realBraillePicturePath = './BrailleCNN/korBrailleCode/real/indexingData4.jpg'        
 
-def action_single(path):
+def action(path):
     
     b = Predict.Predic()
-    a = divide.img_devide(path)
+    a = divide.img_devide(realBraillePicturePath)
     
     a.create_dir()
     a.set_image()
@@ -51,7 +51,7 @@ def action_single(path):
     
     for i in range(0,a.lengh):
         a.devide_img()
-        real = DATAGenerator.load_image_single('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/')     #FIXME: fix path to relative path
+        real = DATAGenerator.load_image_single('./BrailleCNN/korBrailleCode/testDataset/')
         b.Predict_single(model,real)
         a.remove_file()
         
@@ -59,4 +59,4 @@ def action_single(path):
     print(b.result)
     return b.result
 
-action_single(path_single)
+action(realBraillePicturePath)

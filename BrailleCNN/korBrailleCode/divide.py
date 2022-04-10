@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 import DATAGenerator
-
+import math
 class img_devide():
     def __init__(self,img_path):
         self.img_path = img_path
@@ -15,12 +15,12 @@ class img_devide():
 
     def create_dir(self):
         try:
-            os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a/')     #FIXME: fix path to relative path
+            os.mkdir('./BrailleCNN/korBrailleCode/testDataset/a/')     
             print('create new dir')
         except:
             print('already exist')
             pass
-        self.path = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/testDataset/a'        #FIXME: fix path to relative path
+        self.path = './BrailleCNN/korBrailleCode/testDataset/a'        
 
     def devide_img(self):
         self.img = Image.open(self.img_path)
@@ -29,11 +29,17 @@ class img_devide():
         cropped_img.save(self.path + '/'+str(self.call_num)+'.jpg')
         self.call_num+=1
     
-    def set_image(self):
+    #COMMENT : 전체 길이와 높이로 개별 넓이를 구하는 방법
+    def set_image(self):            
         self.img = Image.open(self.img_path)
         self.width = self.img.size[0]
         self.height = self.img.size[1]
-        self.lengh = int(self.width / 36)
+        #COMMENT : 점자가 175개 단위로 width/175한 몫을 더해주어야 한다. 
+        self.lengh = math.ceil(self.width / (float(self.height)/1.16))
+        if(self.width>=6300):
+            m=int(int((float(self.height)/1.16)*175)/100)*100
+            i=int(self.width/m)
+            self.lengh+=i
 
     def remove_file(self):
         try:

@@ -2,7 +2,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 def data_ready():
-    images_dir = 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/'     #FIXME: fix path to relative path
+    images_dir = './BrailleCNN/korBrailleCode/PresetData/'     
 
     datagen = ImageDataGenerator(
                                 rotation_range=5,

@@ -23,7 +23,7 @@ datagen = ImageDataGenerator(
 def mkdir_alphabet():
     for kor in korAlphabet: 
         try:
-            os.mkdir('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/' + kor)      #FIXME: fix path to relative path
+            os.mkdir('./BrailleCNN/korBrailleCode/PresetData/' + kor)      
         except:
             print("already exist")
             pass
@@ -33,11 +33,11 @@ def all_new():
     count=0
     for kor in korAlphabet:
         #COMMENT : PIL이미지
-        img = load_img('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/korBrailleImage/'+kor+'.jpg')         #FIXME: fix path to relative path
+        img = load_img('./BrailleCNN/korBrailleCode/korBrailleImage/'+kor+'.jpg')         
         x = img_to_array(img)
         x = x.reshape((1,) + x.shape)
         i = 0
-        for batch in datagen.flow(x, batch_size=1, save_to_dir='E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/ConvertData/', save_prefix=kor, save_format='jpg'):        #FIXME: fix path to relative path
+        for batch in datagen.flow(x, batch_size=1, save_to_dir='./BrailleCNN/korBrailleCode/ConvertData/', save_prefix=kor, save_format='jpg'):        
             i += 1
             if i > 99:
                 count+=1
@@ -45,11 +45,11 @@ def all_new():
 
 
 def split_data():
-    rootdir="E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/ConvertData/"     #FIXME: fix path to relative path
+    rootdir="./BrailleCNN/korBrailleCode/ConvertData/"     
     for file in os.listdir(rootdir):
         fileName_list=file.split("_")
         letter = fileName_list[0]
-        copyfile(rootdir+file, 'E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/PresetData/' + letter + '/' + file)        #FIXME: fix path to relative path
+        copyfile(rootdir+file, './BrailleCNN/korBrailleCode/PresetData/' + letter + '/' + file)        
         os.remove(rootdir+file)
 
 

@@ -2,14 +2,6 @@ import operator
 import numpy as np
 import cv2
 
-# COMMENT: Alphabet순서대로 출력하는 함수 - EN에서 사용
-# def alpha(num):
-#     if num == 26:
-#         return  ' '
-#     else:
-#         num_tr = num+97
-#         return chr(num_tr)
-
 class Predic():
     result = []
     single_result=[]
@@ -19,7 +11,7 @@ class Predic():
     def Predict_single(self,model,real):
         my_list = model.predict(real)
         index, value = max(enumerate(my_list[0]), key=operator.itemgetter(1))
-        check_acc(my_list,index,value)
+        # check_acc(my_list,index,value)                #COMMENT : 예측할 사진의 개별 인덱스와 VALUE값을 출력하고 싶으면 주석 해제
         self.single_index.append(self.count)
         self.single_result.append(index)
         self.count+=1
@@ -73,6 +65,7 @@ class Predic():
         self.count=0
 
 
+#COMMENT : 예측한 사진의 인덱스와 VALUE를 출력하는 함수
 def check_acc(my_list,index,value):
     print("----------Predict result----------")
     print(my_list)
@@ -81,11 +74,3 @@ def check_acc(my_list,index,value):
     print(index,end="          ")
     print("value :",end=" ")
     print(value)
-
-
-#COMMENT : 예측한 인덱스가 어떤 글자인지 출력하는 함수 - EN에서 사용
-# def chk_trans():
-#     for i in range(0,70):
-#         print(str(i) + ':' + korAlphabet[i],end='  ')
-#         if i%5 ==4 :
-#             print()

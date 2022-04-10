@@ -7,7 +7,7 @@ from keras.callbacks import ModelCheckpoint,ReduceLROnPlateau,EarlyStopping
 def Make_model(train,val):
     K.clear_session()
 
-    model_ckpt = ModelCheckpoint('E:/22-1/CapstoneDesign/Smart_Glass/BrailleCNN/korBrailleCode/KorBrailleNet.h5',save_best_only=True)      #FIXME: fix path to relative path
+    model_ckpt = ModelCheckpoint('./BrailleCNN/korBrailleCode/KorBrailleNet.h5',save_best_only=True)      
     reduce_lr = ReduceLROnPlateau(patience=8,verbose=1)
     early_stop = EarlyStopping(patience=5,verbose=2,monitor='accuracy')
 
