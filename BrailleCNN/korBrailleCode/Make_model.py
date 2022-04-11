@@ -34,7 +34,7 @@ def Make_model(train,val):
     x = L.ReLU()(x)
     x = L.Dense(128,kernel_regularizer=l2(2e-4))(x)
     x = L.ReLU()(x)
-    x = L.Dense(63,activation='softmax')(x)
+    x = L.Dense(64,activation='softmax')(x)
 
     model = Model(entry,x)
     model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
