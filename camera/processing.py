@@ -2,8 +2,8 @@ import cv2, sys
 from matplotlib import pyplot as plt
 import numpy as np
 
-image = cv2.imread('./images/captured.png')
-image_gray = cv2.imread('./images/captured.png', cv2.IMREAD_GRAYSCALE)
+image = cv2.imread('./images/captured5.jpg')
+image_gray = cv2.imread('./images/captured5.jpg', cv2.IMREAD_GRAYSCALE)
 
 b, g, r = cv2.split(image)
 image2 = cv2.merge([r, g, b])
