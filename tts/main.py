@@ -11,8 +11,9 @@ def imagePreprocessing(path):
     return img
 
 def speak(text):
-    path = "Convert_Picture_Text\\"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
-    filename = "voice.mp3"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
+    # path = "Convert_Picture_Text\\"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
+    path="./tts/"
+    filename = "sampleTTSEn.mp3"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
     
     tts = gTTS(text = text, lang = 'ko')
     tts.save(path + filename)
@@ -21,9 +22,10 @@ def speak(text):
 if __name__ == "__main__":
     translator = googletrans.Translator()
     
-    path = "Convert_Picture_Text\\sample\\"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
-    filename = "sample06.png"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
-    img = imagePreprocessing(path + filename)
+    path = "./tts/sampleEn.jpg"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
+    # filename = "sample06.png"  # 본인 환경에 맞게 고쳐야함. 나중에 파이로 할때는 찍은 사진이 오도록 할 예정.
+    # img = imagePreprocessing(path + filename)
+    img=imagePreprocessing(path)
     ocr = tesseract.image_to_string(img, lang = "eng")
     res = translator.translate(ocr.strip(), dest = "ko")
     

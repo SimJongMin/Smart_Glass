@@ -42,6 +42,7 @@ realBraillePicturePath = './BrailleCNN/korBrailleCode/real/indexingData4.jpg'
 
 def action(path):
     
+    Predict.chk_trans()
     b = Predict.Predic()
     a = divide.img_devide(realBraillePicturePath)
     
