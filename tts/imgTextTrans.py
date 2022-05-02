@@ -47,8 +47,13 @@ img=imagePreprocessing(imgPathKor)
 # its = pytesseract.image_to_string(img, config=configEn)
 # its = pytesseract.image_to_string(img, config=configKor)
 its = pytesseract.image_to_string(img, config=configs)
-res = trans.translate(its.strip(), dest="ko")
+lang = trans.detect(its.strip())
+if(lang.lang=='ko'):
+    print(its.strip())
+    speak(its.strip())
+elif(lang.lang=='en'):
+    res = trans.translate(its.strip(), dest="ja")
+    res = trans.translate(res.text.strip(), dest="ko")
 
 print(res.text)
 speak(res.text)
-
