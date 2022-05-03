@@ -6,7 +6,6 @@ bralleTranslate/__pycache__/
 *$py.class
 
 #mp3파일 데이터 제외
-tts/sound/
 *.mp3
 
 #학습 데이터 제외
