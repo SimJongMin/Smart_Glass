@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smartglasss",
+  "private_key_id": "acc1f31065d3931e65569a65b17b02fb30d61e0f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCZF/AsDgCPPJIy\ndUI00wXD5xGyENyc9Qp2sUmc9lAbtGB0K2Yz/+u0G+TeWYKVoJaY6nKDIU5vsIe1\nhjjmX9bHk6xWeKesHeIC27srKEnvnvCxTaNKeJBH/njBkN6qA/+BOJGfphqFdLY/\nvkO0M3lg5xRWYy1iD63/WL133dRtat0uMWckDPvrXX8sr7MJHTRqSH3qJkq0/Zzz\nDI3GPc48a0KW/Mm3RyCmhOw+4xUCb04HUBRljeKWTJIe0WZZp3+hpdln8VlMKhCF\n2VyOUOhICJ27Bu7pm4/23X/QY621lMLmEF/sXMLyyB9RW7Ypi2JXh75hlZLvOdUu\nzTxQcW7NAgMBAAECggEAPu+mXpYLCNd/ypqF8y1lS1ns3mUsLKJYAN91Qb/Iwvru\nRBOrWmk1Pr/Q4M+vbU+tWYPYO6wvkJ7jy244agywQS+mQ44qcAmA5mfqlB1l98pB\nbMJcBLt3pQEqJ3kk8IPgQAE/bIBemsqWObJAJw6aMYoNxE3VVGDZyQV0LpjVQX1v\n2WfW5RFAlRovVylGcfdgGBw1qdzExwMzG/8OUSP3qdQd5tHMuaK+m8UzWxLKTqd5\nxGTSR6kaAUG1eRYkDhCHJ7GXYLKUEWTEf1xV6EjTdN02GMuW/0Pt3wrJXypzclQx\ny9KtlEGJ7DDD27IjjUXpR7Xpa7i+gPJE9A5t0SziyQKBgQDV67PQC+ohoh93pr3w\nj0oD9HDzBuOsQhPBJywg08cMP6LeKXVUtdEB7ST1IcAd4I1k8fGL7XI4H0japEIp\nDzcR1Keg6JMQrOgHAnUu/3kd/DPH5nYKWBfz0/+TrjEimG656UdPf7fwnA/kgHm7\nhgOMnBHEhaIDoinLJ1U923ic0wKBgQC3NTDee56b0Tnh4gfnH1Ske7rxqNanAK6V\nqTsvRyk70piyAuu002a5gUvn1QjqxCOLqX+JSCEfhlpxbFkuirkzqoNZ3Y0tgQPW\nu+G0dcA/Or2agB27XC5Ay3ZULgT8SwIUKVhDa/L2qFWZgecsmvcKL7IX3qEehDkq\nEQO2BKwB3wKBgC+3BUKQhca+vLoZjSBNNbswGMl8begMTQ+2RxeDZVCMGS3onW0p\nqNb/KFEtGAcSATfU54XIjsOJ5twt6zvxUt09S66Occ80YgS+PZkgDsnraTlbZFTm\nVWFjlgxAvGD1Ey2QpQFMgaC/jqPvLDfxqnUAks386Kha0Wuo+FB11a9VAoGBAJEG\n6zuDckf4dTCJhCYCWDeotpDsTZd/47QXdgFz/IEdscBgrYPEQTIh1xubOWbWgyjg\nsVPUJFxXN6tH0MUWDYuHtFjkGAjoc0h+DCqVd+zVrBfsyRxy2S5zoaT7lPi+y9N3\n8yXUA04cbT6KZZyaw2pt3TYmBzcoBjR1qZFh22PTAoGAO7AKwvsbcdn0cmo4UJ0p\nWGaAXGGvcuDy46guUkDgPOYrDPgDZvAYRmJU38K1m7IXQfyKa3lw9HjSnAaHNyZ7\nQjqLzJk9dq7DzpUlLPoTDrRpkQdORNTAmC1hVD0fqb3n9C18pnMBU9E38Tcm7U5C\nVCl7H6zwP9YVmYoDyFD9WA4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "choi-700@smartglasss.iam.gserviceaccount.com",
+  "client_id": "115267927229252646051",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/choi-700%40smartglasss.iam.gserviceaccount.com"
+}

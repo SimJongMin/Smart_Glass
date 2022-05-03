@@ -8,11 +8,9 @@ import numpy as np
 from gtts import gTTS
 import playsound
 
-sharpening_mask1 = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
-sharpening_mask2 = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
-
-
-
+# sharpening_mask1 = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
+# sharpening_mask2 = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+"""
 def imagePreprocessing(path):
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     
@@ -36,6 +34,33 @@ def imagePreprocessing(path):
     cv2.imshow("sharping2",img)
     cv2.waitKey()
     return img
+"""
+
+def detect_text(path):
+    """Detects text in the file."""
+    from google.cloud import vision
+    import io
+    client = vision.ImageAnnotatorClient()
+
+    with io.open(path, 'rb') as image_file:
+        content = image_file.read()
+
+    image = vision.Image(content=content)
+
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+    print('Texts:')
+    
+    if response.error.message:
+        raise Exception(
+            '{}\nFor more info on error messages, check: '
+            'https://cloud.google.com/apis/design/errors'.format(
+                response.error.message))
+
+    for text in texts:
+        return text.description
+
+
 
 def speak(text):
     currentTime=datetime.now()
@@ -58,27 +83,31 @@ imEn="sampleEn.jpg"
 imgPathKor=path+imKor
 imgPathEn=path+imEn
 
+"""
 #comment: 이미지 처리 configuration
-configKor=('-l kor --oem 3 --psm 4')        #oem 2 or 3 선택
-configEn=('-l eng --oem 2 --psm 3')         #psm 3 or 4 선택
-configs = ('-l kor+eng --oem 3 --psm 4')
+# configKor=('-l kor --oem 3 --psm 4')        #oem 2 or 3 선택
+# configEn=('-l eng --oem 2 --psm 3')         #psm 3 or 4 선택
+# configs = ('-l kor+eng --oem 3 --psm 4')
 
 #comment: 이미지 전처리
 # img = imagePreprocessing(imgPathEn)
-img=imagePreprocessing(imgPathKor)
+# img=imagePreprocessing(imgPathKor)
 
 #comment: 이미지 텍스트화 및 번역
 # its = pytesseract.image_to_string(img, config=configEn)
 # its = pytesseract.image_to_string(img, config=configKor)
-its = pytesseract.image_to_string(img, config=configs)
-lang = trans.detect(its.strip())
+# its = pytesseract.image_to_string(img, config=configs)
+"""
+
+imgToStr = detect_text(imgPathKor)
+lang = trans.detect(imgToStr.strip())
 if(lang.lang=='ko'):
-    print(its.strip())
-    # speak(its.strip())
+    print(imgToStr.strip())
+    speak(imgToStr.strip())
 
 elif(lang.lang=='en'):
-    res = trans.translate(its.strip(), dest="ja")
+    res = trans.translate(imgToStr.strip(), dest="ja")
     res = trans.translate(res.text.strip(), dest="ko")
     
     print(res.text)
-    # speak(res.text)
+    speak(res.text)
