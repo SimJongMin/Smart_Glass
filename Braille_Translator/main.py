@@ -1,13 +1,13 @@
 from unicode import *
 from braille import *
 
-if __name__ == "__main__":
-    dot_text = "⠼⠁⠁⠏⠂⠀⠼⠁⠁⠕⠂⠵⠀⠠⠘⠗⠠⠘⠗⠐⠥⠀⠠⠘⠣⠂⠐⠕⠑⠹⠉⠵⠀⠊⠝⠕"
+def trans(li):
+    # dot_text = "⠼⠁⠁⠏⠂⠀⠼⠁⠁⠕⠂⠵⠀⠠⠘⠗⠠⠘⠗⠐⠥⠀⠠⠘⠣⠂⠐⠕⠑⠹⠉⠵⠀⠊⠝⠕"
     plain_text = []
     chojong = {}  # 지금 자음이 초성인지 종성인지 구분하기 위해 사용. i: "초성" / i: "종성"
     leng = "kor"  # kor: 한글 / eng: 영어 / num: 숫자
     
-    dtl = list(dot_text)  # 점자 문자열 처리를 쉽게 하기 위해 리스트로 바꿈.
+    dtl = li  # 점자 문자열 처리를 쉽게 하기 위해 리스트로 바꿈.
     while dtl:
         try:
             if dtl[0] == "42":
