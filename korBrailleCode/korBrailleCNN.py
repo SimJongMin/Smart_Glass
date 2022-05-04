@@ -43,7 +43,7 @@ def modelCreateLoad():
 
 def action():
     #COMMENT: 사진 데이터 불러오기, 예측
-    realBraillePicturePath = '/home/pi/camera/images/trimed_image.jpg'
+    realBraillePicturePath = './real/data.jpg'
     
     model=modelCreateLoad()
     
@@ -57,10 +57,12 @@ def action():
     
     for i in range(0,a.lengh):
         a.devide_img()
-        real = DATAGenerator.load_image_single('./korBrailleCode/testDataset/')
+        real = DATAGenerator.load_image_single('./testDataset/')
         b.Predict_single(model,real)
         a.remove_file()
         
     b.composit()
     print(b.result)
     return b.result
+
+action()

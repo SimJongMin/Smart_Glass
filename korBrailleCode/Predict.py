@@ -34,7 +34,7 @@ class Predic():
         return self.single_index, self.single_result
     
     def composit(self):
-        for x in range(0,len(self.single_result)):
+        for x in range(1,len(self.single_result)):
             if(self.single_result[x]==19 and self.single_result[x-1]==29):           #COMMENT : ㅟ
                 self.result.remove(self.single_result[x-1])
                 self.result.insert(x-1,100)
