@@ -136,8 +136,7 @@ def camera_processing() :
 	h = y_max-y_min
 
 	img_trim = image[y:y+h, x:x+w]
-	cv2.imwrite('./images/trimed_image.png', img_trim)
-	org_image = cv2.imread('./images/trimed_image.png')
+	cv2.imwrite('./images/trimed_image.jpg', img_trim)
 	#cv2.imshow('org_image', org_image)
 
 	#cv2.waitKey(0)

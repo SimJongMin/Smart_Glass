@@ -1,5 +1,5 @@
 
-'''
+
 import RPi.GPIO as GPIO
 from tts import imgTransCode
 # from korBrailleCode import main
@@ -30,4 +30,3 @@ while True:
     btnStat=GPIO.input(brailleBtn)
     if(btnStat==1):
         brailleCode()
-'''

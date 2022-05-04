@@ -119,12 +119,9 @@ def transSpeak(imgPath):
 def mainStart():
     # comment: 입력 사진 path
     # path="./tts/img/"
-    path = "./img/"
-    imKor = "sampleKor4.jpg"
-    # imKor = "sampleKor2.jpg"
-    imEn = "sampleEn3.jpg"
+    path = "/home/pi/camera/images/"
+    img = "trimed_image.jpg"
 
-    imgPathKor = path+imKor
-    imgPathEn = path+imEn
+    pathImg=path+img
 
-    transSpeak(imgPathEn)
+    transSpeak(pathImg)
