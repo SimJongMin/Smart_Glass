@@ -36,6 +36,8 @@ def imagePreprocessing(path):
     return img
 """
 
+
+#comment: 이미지 텍스트화
 def detect_text(path):
     """Detects text in the file."""
     from google.cloud import vision
@@ -49,7 +51,6 @@ def detect_text(path):
 
     response = client.text_detection(image=image)
     texts = response.text_annotations
-    print('Texts:')
     
     if response.error.message:
         raise Exception(
@@ -61,7 +62,7 @@ def detect_text(path):
         return text.description
 
 
-
+#comment: TTS
 def speak(text):
     currentTime=datetime.now()
     now = currentTime.strftime("%Y%m%d-%H%M%S")
@@ -77,7 +78,6 @@ trans = Translator()
 #comment: 입력 사진 path
 path="./tts/img/"
 imKor = "sampleKor3.jpg"
-# imKor = "sampleKor2.jpg"
 imEn="sampleEn.jpg"
 
 imgPathKor=path+imKor
@@ -99,15 +99,32 @@ imgPathEn=path+imEn
 # its = pytesseract.image_to_string(img, config=configs)
 """
 
-imgToStr = detect_text(imgPathKor)
-lang = trans.detect(imgToStr.strip())
-if(lang.lang=='ko'):
-    print(imgToStr.strip())
-    speak(imgToStr.strip())
 
-elif(lang.lang=='en'):
-    res = trans.translate(imgToStr.strip(), dest="ja")
-    res = trans.translate(res.text.strip(), dest="ko")
-    
-    print(res.text)
-    speak(res.text)
+def transSpeak(imgPath):
+    trans = Translator()
+    imgToStr = detect_text(imgPath)
+    lang = trans.detect(imgToStr.strip())
+    if(lang.lang == 'ko'):
+        print(imgToStr.strip())
+        speak(imgToStr.strip())
+
+    elif(lang.lang == 'en'):
+        res = trans.translate(imgToStr.strip(), dest="ja")
+        res = trans.translate(res.text.strip(), dest="ko")
+
+        print(res.text.strip())
+        speak(res.text)
+
+
+def mainStart():
+    # comment: 입력 사진 path
+    # path="./tts/img/"
+    path = "./img/"
+    imKor = "sampleKor4.jpg"
+    # imKor = "sampleKor2.jpg"
+    imEn = "sampleEn3.jpg"
+
+    imgPathKor = path+imKor
+    imgPathEn = path+imEn
+
+    transSpeak(imgPathEn)

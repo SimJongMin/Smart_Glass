@@ -17,30 +17,35 @@ import divide
 import Predict
 import Load_model
 
-#COMMENT : PresetData에 학습 데이터가 없는 경우에 실행한다.
-# Rdy_image.Preset()        
+
+def dataCreateDiv():
+    #COMMENT : PresetData에 학습 데이터가 없는 경우에 실행한다.
+    # Rdy_image.Preset()
+
+    #COMMENT : data Generator 테스트, 검증 데이터 생성
+    train_generator, val_generator = DATAGenerator.data_ready()
+    return val_generator
 
 
-#COMMENT : data Generator 테스트, 검증 데이터 생성
-train_generator, val_generator = DATAGenerator.data_ready()
+def modelCreateLoad():
+    val_generator=dataCreateDiv()
+    #COMMENT : KorBrailleNet.h5 파일이 없는 경우 or korBrailleImage 내부의 학습데이터가 변경된 경우 실행한다.
+    # hist = Make_model.Make_model(train_generator,val_generator)
+    # Make_model.print_acc_loss(hist)
+
+    #COMMENT: BrailleNet에 저장된 모델을 불러옴.
+    #COMMENT: acc확인
+    model = Load_model.load_model()
+    acc = Load_model.acc_chk(model, val_generator)
+    return model
 
 
 
-#COMMENT : KorBrailleNet.h5 파일이 없는 경우 or korBrailleImage 내부의 학습데이터가 변경된 경우 실행한다.
-# hist = Make_model.Make_model(train_generator,val_generator)           
-# Make_model.print_acc_loss(hist)                   
-
-
-#COMMENT: BrailleNet에 저장된 모델을 불러옴.
-#COMMENT: acc확인
-model = Load_model.load_model()
-acc = Load_model.acc_chk(model,val_generator)
-
-
-#COMMENT: 사진 데이터 불러오기, 예측
-realBraillePicturePath = './BrailleCNN/korBrailleCode/real/indexingData4.jpg'        
-
-def action(path):
+def action():
+    #COMMENT: 사진 데이터 불러오기, 예측
+    realBraillePicturePath = './BrailleCNN/korBrailleCode/real/indexingData4.jpg'
+    
+    model=modelCreateLoad()
     
     Predict.chk_trans()
     b = Predict.Predic()
@@ -60,4 +65,5 @@ def action(path):
     print(b.result)
     return b.result
 
-action(realBraillePicturePath)
+
+action()
