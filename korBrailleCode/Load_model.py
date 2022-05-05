@@ -2,6 +2,7 @@
 def load_model():
     from keras.models import load_model
     model = load_model('./korBrailleCode/KorBrailleNet.h5')     
+    # model = load_model('./KorBrailleNet.h5')     
     return model
 
 

@@ -6,8 +6,8 @@ from googletrans import Translator
 import cv2
 import numpy as np
 from gtts import gTTS
-import playsound
-
+#from playsound import playsound
+from preferredsoundplayer import playsound
 # sharpening_mask1 = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
 # sharpening_mask2 = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
 """
@@ -70,13 +70,13 @@ def speak(text):
     path='./tts/sound/'
     filename = '{0}.mp3'.format(now)
     tts.save(path+filename)
-    playsound.playsound(path+filename)
+    playsound(path+filename)
 
 #COMMENT: 이미지 텍스트화 객체 및 언어 번역 객체
 trans = Translator()
 
 #comment: 입력 사진 path
-path="./tts/img/"
+path="./images/"
 imKor = "sampleKor3.jpg"
 imEn="sampleEn.jpg"
 
@@ -119,9 +119,11 @@ def transSpeak(imgPath):
 def mainStart():
     # comment: 입력 사진 path
     # path="./tts/img/"
-    path = "/home/pi/camera/images/"
-    img = "trimed_image.jpg"
+    path = "./img/"
+    img = "sampleKor.jpg"
 
     pathImg=path+img
 
     transSpeak(pathImg)
+
+mainStart()

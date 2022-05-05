@@ -43,7 +43,8 @@ def modelCreateLoad():
 
 def action():
     #COMMENT: 사진 데이터 불러오기, 예측
-    realBraillePicturePath = '/home/pi/camera/images/trimed_image.jpg'
+    #realBraillePicturePath = '/home/pi/camera/images/trimed_image.jpg'
+    realBraillePicturePath='./images/운수좋은날.jpg'
     
     model=modelCreateLoad()
     
@@ -64,3 +65,6 @@ def action():
     b.composit()
     print(b.result)
     return b.result
+
+
+action()

@@ -1,5 +1,17 @@
 from unicode import *
 from braille import *
+from preferredsoundplayer import playsound
+
+
+def speak(text):
+    currentTime=datetime.now()
+    now = currentTime.strftime("%Y%m%d-%H%M%S")
+    tts = gTTS(text = text, lang = 'ko')
+    path='./tts/sound/'
+    filename = '{0}.mp3'.format(now)
+    tts.save(path+filename)
+    playsound(path+filename)
+
 
 def trans(li):
     # dot_text = "⠼⠁⠁⠏⠂⠀⠼⠁⠁⠕⠂⠵⠀⠠⠘⠗⠠⠘⠗⠐⠥⠀⠠⠘⠣⠂⠐⠕⠑⠹⠉⠵⠀⠊⠝⠕"
@@ -146,6 +158,8 @@ def trans(li):
     
     print(plain_text)
     print(join_jamos(plain_text))
+    
+    speak(plain_text)
             
 """
 ⠊⠗⠚⠒⠑⠟⠈⠍⠁ - 대한민국 ㅇ

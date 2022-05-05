@@ -1,6 +1,6 @@
 # Smart_Glass
 
-
+Raspberry Pi PWD = ~/Smart_Glass
 
 
 

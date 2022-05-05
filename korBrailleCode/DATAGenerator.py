@@ -2,7 +2,8 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 def data_ready():
-    images_dir = './korBrailleCode/PresetData/'     
+    #images_dir = './korBrailleCode/PresetData/'
+    images_dir = './korBrailleCode/PresetData/'
 
     datagen = ImageDataGenerator(
                                 rotation_range=5,

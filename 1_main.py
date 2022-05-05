@@ -10,4 +10,7 @@ from Braille_Translator import main
 camera_capture.camera()
 processing.camera_processing()
 
-main.trans(korBrailleCNN.action())  # tts는 Braille_Translator -> main 맨 밑에 print문 지우고 그 위치에 넣으면 됨.
+main.trans(korBrailleCNN.action())  # fixme: playsound 함수 올바르게 적용되었는지 확인
+
+
+

@@ -15,12 +15,14 @@ class img_devide():
 
     def create_dir(self):
         try:
-            os.mkdir('./korBrailleCode/testDataset/a/')     
+            #os.mkdir('./korBrailleCode/testDataset/a/')     
+            os.mkdir('./korBrailleCode/testDataset/a/')  
             print('create new dir')
         except:
             print('already exist')
             pass
-        self.path = './korBrailleCode/testDataset/a'        
+        #self.path = './korBrailleCode/testDataset/a'        
+        self.path = './korBrailleCode/testDataset/a'
 
     def devide_img(self):
         self.img = Image.open(self.img_path)
