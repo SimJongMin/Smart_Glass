@@ -58,7 +58,7 @@ def action():
     
     for i in range(0,a.lengh):
         a.devide_img()
-        real = DATAGenerator.load_image_single('./korBrailleCode/testDataset/')
+        real = DATAGenerator.load_image_single('./testDataset/')
         b.Predict_single(model,real)
         a.remove_file()
         
@@ -66,5 +66,8 @@ def action():
     print(b.result)
     return b.result
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97e3271dfd8ba09ddac668b9aa15149e3023a569
 action()

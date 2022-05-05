@@ -9,11 +9,11 @@ bralleTranslate/__pycache__/
 *.mp3
 
 #학습 데이터 제외
-BrailleCNN/EnBrailleCode/PresetData/
-BrailleCNN/korBrailleCode/PresetData/
+EnBrailleCode/PresetData/
+korBrailleCode/PresetData/
 
 #TEST파일 제외
-BrailleCNN/korBrailleCode/test.py
+korBrailleCode/test.py
 
 #.DS_Store 제외
 .DS_Store
