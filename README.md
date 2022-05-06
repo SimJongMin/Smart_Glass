@@ -11,11 +11,11 @@ ___
 ### 0. Upgrade & Update
    * Upgrade & Update code
 
-    ```bash
-      $ sudo apt-get update
-      $ sudo apt-get upgrade
-      $ sudo pip install --upgrade pip
-    ```
+       ```bash
+         $ sudo apt-get update
+         $ sudo apt-get upgrade
+         $ sudo pip install --upgrade pip
+       ```
 
 ### 1. Raspberry Pi Korean
 
