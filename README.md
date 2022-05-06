@@ -18,14 +18,14 @@ ___
        ```
 
 ### 1. Raspberry Pi Korean
-
-    ```bash
-    $ sudo apt-get install fonts-unfonts-core
-    (recommend reboot Raspberry Pi)
-    ```
+   * Korean Code
+    
+       ```bash
+       $ sudo apt-get install fonts-unfonts-core
+       (recommend reboot Raspberry Pi)
+       ```
 
 ### 2. Install tensorflow
-
     ```bash
     $ sudo apt-get install -y libhdf5-dev libc-ares-dev libeigen3-dev gcc gfortran libgfortran5 libatlas3-base libatlas-base-dev libopenblas-dev libopenblas-base libblas-dev liblapack-dev cython3 libatlas-base-dev openmpi-bin libopenmpi-dev python3-dev
 
