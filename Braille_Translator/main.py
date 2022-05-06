@@ -156,10 +156,10 @@ def trans(li):
             k = k + 1
     plain_text = "".join(ptl)
     
-    print(plain_text)
-    print(join_jamos(plain_text))
+    # print(plain_text)
+    # print(join_jamos(plain_text))
     
-    speak(plain_text)
+    speak(join_jamos(plain_text))
             
 """
 ⠊⠗⠚⠒⠑⠟⠈⠍⠁ - 대한민국 ㅇ

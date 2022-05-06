@@ -63,11 +63,7 @@ def action():
         a.remove_file()
         
     b.composit()
-    print(b.result)
+    # print(b.result)
     return b.result
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 97e3271dfd8ba09ddac668b9aa15149e3023a569
 action()
