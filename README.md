@@ -11,9 +11,9 @@ ___
 ### 0. Upgrade & Update
 
     ```bash
-    $ sudo apt-get update
-    $ sudo apt-get upgrade
-    $ sudo pip install --upgrade pip
+      $ sudo apt-get update
+      $ sudo apt-get upgrade
+      $ sudo pip install --upgrade pip
     ```
 
 ### 1. Raspberry Pi Korean
