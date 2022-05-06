@@ -8,7 +8,7 @@
 
 ___
 
-### 0. Upgrade & Update
+#### 1-0. Upgrade & Update
    * Upgrade & Update code
 
        ```bash
@@ -17,15 +17,16 @@ ___
          $ sudo pip install --upgrade pip
        ```
 
-### 1. Raspberry Pi Korean
+#### 1-1. Raspberry Pi Korean
    * Korean Code
     
        ```bash
        $ sudo apt-get install fonts-unfonts-core
+       
        (recommend reboot Raspberry Pi)
        ```
 
-### 2. Install tensorflow
+#### 1-2. Install tensorflow
    * Install Tensorflow Code
        
        ```bash
@@ -51,7 +52,7 @@ ___
        ```
       [출처 Github](https://github.com/PINTO0309/Tensorflow-bin)
 
-### 3. Install OpenCV
+#### 1-3. Install OpenCV
    * Install OpenCV Code
    
        ```bash
@@ -60,14 +61,14 @@ ___
        $ pip install opencv-contrib-python (more libraries and customization)
        ```
 
-### 4. Install Google Translation
+#### 1-4. Install Google Translation
    * Install Google Translation api Code
    
        ```bash
        $ pip install googletrans==4.0.0-rc1
        ```
 
-### 5. Install GTTS / pandas / preferredsoundplayer
+### 1-5. Install GTTS / pandas / preferredsoundplayer
    * Install GTTS / pandas / prefferedsoundplayer Code
    
        ```bash
@@ -76,7 +77,7 @@ ___
        $ pip install preferredsoundplayer
        ```
 
-### 6. Install Google Vision
+#### 1-6. Install Google Vision
    * Install Google Vision Code
 
        ```bash
@@ -98,7 +99,7 @@ ___
       
       [Google 공식 문서](https://cloud.google.com/vision/docs/setup#linux-or-macos)
 
-### 7. Install pytesseract
+#### 1-7. Install pytesseract
    * Install pytesseract Code
    
        ```bash
