@@ -119,7 +119,7 @@ def transSpeak(imgPath):
 def mainStart():
     # comment: 입력 사진 path
     # path="./tts/img/"
-    path = "./image/"
+    path = "./images/"
     img = "sampleKor.jpg"
 
     pathImg=path+img
