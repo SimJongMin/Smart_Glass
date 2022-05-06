@@ -112,10 +112,10 @@ def camera_processing() :
 	x_min, x_max = 0,0
 	value = list()
 	for i in range(len(contours_xy)):
-    		for j in range(len(contours_xy[i])):
-        		value.append(contours_xy[i][j][0][0]) #네번째 괄호가 0일때 x의 값
-        		x_min = min(value)
-        		x_max = max(value)
+		for j in range(len(contours_xy[i])):
+			value.append(contours_xy[i][j][0][0]) #네번째 괄호가 0일때 x의 값
+			x_min = min(value)
+			x_max = max(value)
 	print(x_min)
 	print(x_max)
  
@@ -123,10 +123,10 @@ def camera_processing() :
 	y_min, y_max = 0,0
 	value = list()
 	for i in range(len(contours_xy)):
-    		for j in range(len(contours_xy[i])):
-        		value.append(contours_xy[i][j][0][1]) #네번째 괄호가 0일때 x의 값
-        		y_min = min(value)
-        		y_max = max(value)
+		for j in range(len(contours_xy[i])):
+			value.append(contours_xy[i][j][0][1]) #네번째 괄호가 0일때 x의 값
+			y_min = min(value)
+			y_max = max(value)
 	print(y_min)
 	print(y_max)
 
@@ -137,8 +137,12 @@ def camera_processing() :
 
 	img_trim = image[y:y+h, x:x+w]
 	cv2.imwrite('./images/trimed_image.jpg', img_trim)
-	#cv2.imshow('org_image', org_image)
+	# org_image = cv2.imread('./images/trimed_image.jpg')
+	# cv2.imshow('org_image', org_image)
 
-	#cv2.waitKey(0)
-	#cv2.destroyAllWindows()
+	# cv2.waitKey(0)
+	# cv2.destroyAllWindows()
 
+
+
+# camera_processing()
