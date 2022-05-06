@@ -9,6 +9,7 @@
 ___
 
 ### 0. Upgrade & Update
+   * Upgrade & Update code
 
     ```bash
       $ sudo apt-get update
