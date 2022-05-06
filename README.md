@@ -95,51 +95,53 @@ ___
 
 ### 7. Install pytesseract
 
-    '''c
+    
     $ sudo apt-get  install  tesseract-ocr  libtesseract-dev libleptonica-dev 
     $ sudo apt-get install autoconf automake libtool pkg-config libpng12-dev libjpeg8-dev libtiff5-dev zlib1g-dev
     $ sudo apt-get install libleptonica-dev
     $ sudo apt install tesseract-ocr tesseract-ocr -kor
     $ sudo apt install tesseract-ocr-script-hang tesseract-ocr-script-hang-vert
     $ sudo pip3 install pytesseract
-    '''
+    
 
 ___
 
 ## 2. Set Raspberry Pi pwd
 
-    '''c
+    
     $ cd ~./Smart_Glass
-    '''
+    
 
 ## 3. Add omission file
 
 * Add "sound" folder
     path : ./tts/sound
 
-    '''c
+    
     $ cd tts
     $ mkdir sound
-    '''
+    
 
 * Add "testDataset" adn "a" folder
     * path : ./korBrailleCode/testDataset/a
 
-    '''c
+    
+    ```bash
     $ cd korBrailleCode
     $ mkdir testDataset
     $ cd testDataset
     $ mkdir a
-    '''
+    ```
+    
 
     * path : ./EnBrailleCode/testDataset/a
 
-    '''c
-    $ cd EnBrailleCode
-    $ mkdir testDataset
-    $ cd testDataset
-    $ mkdir a
-    '''
+    ```bash
+    $cd EnBrailleCode
+    $mkdir testDataset
+    $cd testDataset
+    $mkdir a
+    ```
 
 ___
 
