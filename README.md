@@ -1,33 +1,31 @@
 # Smart_Glass
 
-___
-
 ## 1. Install need libraries
 
-___
+    * Recommended Raspberry Pi Specs
+        * os : Raspberry Pi OS(64-bit)
+        * python : 3.9.x
 
-### Recommended Raspberry Pi Specs
-    * os : Raspberry Pi OS(64-bit)
-    * python : 3.9.x
+___
 
 ### 0. Upgrade & Update
 
-    '''c
+    ```bash
     $ sudo apt-get update
     $ sudo apt-get upgrade
     $ sudo pip install --upgrade pip
-    '''
+    ```
 
 ### 1. Raspberry Pi Korean
 
-    '''c
+    ```bash
     $ sudo apt-get install fonts-unfonts-core
     (recommend reboot Raspberry Pi)
-    '''
+    ```
 
 ### 2. Install tensorflow
 
-    '''c
+    ```bash
     $ sudo apt-get install -y libhdf5-dev libc-ares-dev libeigen3-dev gcc gfortran libgfortran5 libatlas3-base libatlas-base-dev libopenblas-dev libopenblas-base libblas-dev liblapack-dev cython3 libatlas-base-dev openmpi-bin libopenmpi-dev python3-dev
 
     $ sudo apt-get install -y libhdf5-dev libc-ares-dev libeigen3-dev gcc gfortran libgfortran5 libatlas3-base libatlas-base-dev libopenblas-dev libopenblas-base
@@ -47,34 +45,34 @@ ___
     $ sudo -H pip3 install tensorflow-2.8.0-cp39-none-linux_aarch64.whl
 
     【Required】 Restart the terminal.
-    '''
+    ```
         [출처 Github](https://github.com/PINTO0309/Tensorflow-bin)
 
 ### 3. Install OpenCV
 
-    '''c
+    ```bash
     $ python3 -m pip install opencv-python
     or
     $ pip install opencv-contrib-python (more libraries and customization)
-    '''
+    ```
 
 ### 4. Install Google Translation
 
-    '''c
+    ```bash
     $ pip install googletrans==4.0.0-rc1
-    '''
+    ```
 
 ### 5. Install GTTS / pandas / preferredsoundplayer
 
-    '''c
+    ```bash
     $ pip install gtts
     $ pip install pandas
     $ pip install preferredsoundplayer
-    '''
+    ```
 
 ### 6. Install Google Vision
 
-    '''c
+    ```bash
     $ sudo apt install libjpeg8-dev python-picamera
     $ sudo pip install --upgrade google-api-python-client google-cloud google-cloud-vision
     $ sudo pip install --upgrade Pillow
@@ -89,59 +87,59 @@ ___
     $ export GOOGLE_APPLICATION_CREDENTIALS=export GOOGLE_APPLICATION_CREDENTIALS="/home/pi/~/Smart_Glass/apiKey/smartglasss-acc1fs1065d3.json"
     :wq
     $ source ~/.bashrc
-    '''
+    ```
 
         [Google 공식 문서](https://cloud.google.com/vision/docs/setup#linux-or-macos)
 
 ### 7. Install pytesseract
 
-    
+    ```bash
     $ sudo apt-get  install  tesseract-ocr  libtesseract-dev libleptonica-dev 
     $ sudo apt-get install autoconf automake libtool pkg-config libpng12-dev libjpeg8-dev libtiff5-dev zlib1g-dev
     $ sudo apt-get install libleptonica-dev
     $ sudo apt install tesseract-ocr tesseract-ocr -kor
     $ sudo apt install tesseract-ocr-script-hang tesseract-ocr-script-hang-vert
     $ sudo pip3 install pytesseract
-    
+    ```
 
 ___
 
 ## 2. Set Raspberry Pi pwd
 
-    
+    ```bash
     $ cd ~./Smart_Glass
-    
+    ```
+
+___
 
 ## 3. Add omission file
 
 * Add "sound" folder
     path : ./tts/sound
 
-    
-    $ cd tts
-    $ mkdir sound
-    
+        ```bash
+        $ cd tts
+        $ mkdir sound
+        ```
 
 * Add "testDataset" adn "a" folder
     * path : ./korBrailleCode/testDataset/a
 
-    
-    ```bash
-    $ cd korBrailleCode
-    $ mkdir testDataset
-    $ cd testDataset
-    $ mkdir a
-    ```
-    
+        ```bash
+        $ cd korBrailleCode
+        $ mkdir testDataset
+        $ cd testDataset
+        $ mkdir a
+        ```
 
     * path : ./EnBrailleCode/testDataset/a
 
-    ```bash
-    $cd EnBrailleCode
-    $mkdir testDataset
-    $cd testDataset
-    $mkdir a
-    ```
+        ```bash
+        $cd EnBrailleCode
+        $mkdir testDataset
+        $cd testDataset
+        $mkdir a
+        ```
 
 ___
 
