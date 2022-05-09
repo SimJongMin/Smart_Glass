@@ -2,6 +2,9 @@
 BrailleCNN/EnBrailleCode/__pycache__/
 BrailleCNN/korBrailleCode/__pycache__/
 bralleTranslate/__pycache__/
+Braille_Translator/__pycache__
+__pycache__
+tts/__pycache__
 *.py[cod]
 *$py.class
 

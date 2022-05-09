@@ -6,11 +6,8 @@ from googletrans import Translator
 import cv2
 import numpy as np
 from gtts import gTTS
-#from playsound import playsound
 from preferredsoundplayer import playsound
-# sharpening_mask1 = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
-# sharpening_mask2 = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
-
+#from playsound import playsound
 
 #comment: 이미지 텍스트화
 def detect_text(path):
@@ -47,51 +44,21 @@ def speak(text):
     tts.save(path+filename)
     playsound(path+filename)
 
-#COMMENT: 이미지 텍스트화 객체 및 언어 번역 객체
-trans = Translator()
 
-#comment: 입력 사진 path
-path="./images/"
-imKor = "sampleKor3.jpg"
-imEn="sampleEn.jpg"
-
-imgPathKor=path+imKor
-imgPathEn=path+imEn
-
-"""
-#comment: 이미지 처리 configuration
-# configKor=('-l kor --oem 3 --psm 4')        #oem 2 or 3 선택
-# configEn=('-l eng --oem 2 --psm 3')         #psm 3 or 4 선택
-# configs = ('-l kor+eng --oem 3 --psm 4')
-
-#comment: 이미지 전처리
-# img = imagePreprocessing(imgPathEn)
-# img=imagePreprocessing(imgPathKor)
-
-#comment: 이미지 텍스트화 및 번역
-# its = pytesseract.image_to_string(img, config=configEn)
-# its = pytesseract.image_to_string(img, config=configKor)
-# its = pytesseract.image_to_string(img, config=configs)
-"""
-
-
-def transSpeak(imgPath):
-    trans = Translator()
+def transSpeak(imgPath, trans):
     imgToStr = detect_text(imgPath)
     lang = trans.detect(imgToStr.strip())
     if(lang.lang == 'ko'):
-        print(imgToStr.strip())
-        speak(imgToStr.strip())
+        return imgToStr.strip()
 
     elif(lang.lang == 'en'):
         res = trans.translate(imgToStr.strip(), dest="ja")
         res = trans.translate(res.text.strip(), dest="ko")
 
-        print(res.text.strip())
-        speak(res.text)
+        return res.text.strip()
 
 
-def mainStart():
+def mainStart(trans):
     # comment: 입력 사진 path
     # path="./tts/img/"
     path = "./images/"
@@ -99,6 +66,5 @@ def mainStart():
 
     pathImg=path+img
 
-    transSpeak(pathImg)
-
-mainStart()
+    str=transSpeak(pathImg, trans)
+    return str

@@ -1,7 +1,5 @@
-from unicode import *
-from braille import *
-
-
+from Braille_Translator import unicode
+from Braille_Translator import braille
 
 def trans(li):
     # dot_text = "⠼⠁⠁⠏⠂⠀⠼⠁⠁⠕⠂⠵⠀⠠⠘⠗⠠⠘⠗⠐⠥⠀⠠⠘⠣⠂⠐⠕⠑⠹⠉⠵⠀⠊⠝⠕"
@@ -20,88 +18,88 @@ def trans(li):
                 dtl.pop(0)
                 continue
             
-            if dtl[0] in space.keys():
-                plain_text.append(space[dtl[0]])
+            if dtl[0] in braille.space.keys():
+                plain_text.append(braille.space[dtl[0]])
                 if leng == "num":  # 숫자는 영어와 다르게 끝을 알리는 점자가 없다. 그래서 점자가 영어나 한글과 겹칠수도 있는데 그럴 경우 공백으로 구분한다.
                     leng = "kor"
                 dtl.pop(0)
                 continue
             
-            if dtl[0] in english.keys():
-                if english[dtl[0]] == "영어 시작":
+            if dtl[0] in braille.english.keys():
+                if braille.english[dtl[0]] == "영어 시작":
                     leng = "eng"
                     dtl.pop(0)
                     continue
-                elif english[dtl[0]] == "영어 끝":
+                elif braille.english[dtl[0]] == "영어 끝":
                     leng = "kor"
                     dtl.pop(0)
                     continue
             
-            if dtl[0] in number.keys(): 
-                if number[dtl[0]] == "숫자 시작":
+            if dtl[0] in braille.number.keys(): 
+                if braille.number[dtl[0]] == "숫자 시작":
                     leng = "num"
                     dtl.pop(0)
                     continue
             
             if leng == "eng":
-                if dtl[0] not in english.keys():
+                if dtl[0] not in braille.english.keys():
                     dtl.pop(0)
                     continue
-                plain_text.append(english[dtl[0]])
+                plain_text.append(braille.english[dtl[0]])
                 dtl.pop(0)
             
             if leng == "num":
-                plain_text.append(number[dtl[0]])
+                plain_text.append(braille.number[dtl[0]])
                 dtl.pop(0)
             
             if leng == "kor":
                 if len(dtl) >= 2: 
-                    if dtl[0] + dtl[1] in yakeo.keys():
-                        plain_text.append(yakeo[dtl[0] + dtl[1]])
+                    if dtl[0] + dtl[1] in braille.yakeo.keys():
+                        plain_text.append(braille.yakeo[dtl[0] + dtl[1]])
                         dtl.pop(0)
                         dtl.pop(0)
                         continue
-                    # elif dtl[0] + dtl[1] in chosung.keys():
-                    #     plain_text = plain_text + chosung[dtl[0] + dtl[1]]
+                    # elif dtl[0] + dtl[1] in braille.chosung.keys():
+                    #     plain_text = plain_text + braille.chosung[dtl[0] + dtl[1]]
                     #     dtl.pop(0)
                     #     dtl.pop(0)
                     #     chojong[len(plain_text) - 1] = "초성"
                     #     continue
-                    elif dtl[0] + dtl[1] in joongsung.keys():
-                        plain_text.append(joongsung[dtl[0] + dtl[1]])
+                    elif dtl[0] + dtl[1] in braille.joongsung.keys():
+                        plain_text.append(braille.joongsung[dtl[0] + dtl[1]])
                         dtl.pop(0)
                         dtl.pop(0)
                         continue
-                if dtl[0] in yakeo.keys():
+                if dtl[0] in braille.yakeo.keys():
                     print()
                     if len(plain_text) > 0:
-                        if plain_text[-1] == "ㅅ" and yakeo[dtl[0]] in ("ㄱㅏ", "ㄷㅏ", "ㅂㅏ", "ㅅㅏ", "ㅈㅏ"):
+                        if plain_text[-1] == "ㅅ" and braille.yakeo[dtl[0]] in ("ㄱㅏ", "ㄷㅏ", "ㅂㅏ", "ㅅㅏ", "ㅈㅏ"):
                             plain_text.pop()
-                            plain_text.extend(list(split_syllables(chr(ord(join_jamos(yakeo[dtl[0]])) + 588))))
+                            plain_text.extend(list(unicode.split_syllables(chr(ord(unicode.join_jamos(braille.yakeo[dtl[0]])) + 588))))
                             dtl.pop(0)
                             chojong.popitem()
                             continue
-                    plain_text.extend(list(yakeo[dtl[0]]))
-                    if yakeo[dtl[0]][-1] in ("ㄱ", "ㄴ", "ㄹ", "ㅇ", "ㅆ"):
+                    plain_text.extend(list(braille.yakeo[dtl[0]]))
+                    if braille.yakeo[dtl[0]][-1] in ("ㄱ", "ㄴ", "ㄹ", "ㅇ", "ㅆ"):
                         chojong[len(plain_text) - 1] = "종성"
                     dtl.pop(0)
-                elif dtl[0] in chosung.keys():
+                elif dtl[0] in braille.chosung.keys():
                     if len(plain_text) > 0:
-                        if plain_text[-1] == "ㅅ" and chosung[dtl[0]] in ("ㄱ", "ㄷ", "ㅂ", "ㅅ", "ㅈ"):
+                        if plain_text[-1] == "ㅅ" and braille.chosung[dtl[0]] in ("ㄱ", "ㄷ", "ㅂ", "ㅅ", "ㅈ"):
                             plain_text.pop()
-                            plain_text.append(chr(ord(chosung[dtl[0]]) + 1))
+                            plain_text.append(chr(ord(braille.chosung[dtl[0]]) + 1))
                             dtl.pop(0)
                             chojong.popitem()
                             chojong[len(plain_text) - 1] = "초성"
                             continue    
-                    plain_text.append(chosung[dtl[0]])
+                    plain_text.append(braille.chosung[dtl[0]])
                     dtl.pop(0)
                     chojong[len(plain_text) - 1] = "초성"
-                elif dtl[0] in joongsung.keys():
-                    plain_text.append(joongsung[dtl[0]])
+                elif dtl[0] in braille.joongsung.keys():
+                    plain_text.append(braille.joongsung[dtl[0]])
                     dtl.pop(0)
-                elif dtl[0] in jongsung.keys():
-                    plain_text.append(jongsung[dtl[0]])
+                elif dtl[0] in braille.jongsung.keys():
+                    plain_text.append(braille.jongsung[dtl[0]])
                     dtl.pop(0)
                     chojong[len(plain_text) - 1] = "종성"
         except:
@@ -118,19 +116,19 @@ def trans(li):
     k = 0  # 인덱스값이 계속 변하는 ptl이기 때문에, 초기 ptl의 인덱스로 접근하기 위한 변수.
     while i < len(ptl):
         try:
-            if ptl[i] in ("ㄴ", "ㄷ", "ㅁ", "ㅂ", "ㅈ", "ㅋ", "ㅌ", "ㅍ", "ㅎ", "ㄸ", "ㅃ", "ㅉ") and ptl[i + 1] == "ㅏ" and ptl[i + 2] in joongsung.values():
+            if ptl[i] in ("ㄴ", "ㄷ", "ㅁ", "ㅂ", "ㅈ", "ㅋ", "ㅌ", "ㅍ", "ㅎ", "ㄸ", "ㅃ", "ㅉ") and ptl[i + 1] == "ㅏ" and ptl[i + 2] in braille.joongsung.values():
                 del ptl[i + 1]
                 k = k + 1
                 continue
             
-            if ptl[i] in joongsung.values():  # 모음이 나왔는데
+            if ptl[i] in braille.joongsung.values():  # 모음이 나왔는데
                 if i == 0:  # 그냥 시작부터 바로 모음이면
                     ptl.insert(i, "ㅇ")  # ㅇ 추가
                     i = i + 1
                 elif ptl[i - 1] == " ":  # 앞에가 띄어쓰기면
                     ptl.insert(i, "ㅇ")  # ㅇ 추가
                     i = i + 1
-                elif ptl[i - 1] in joongsung.values():  # i - 1이 모음이면
+                elif ptl[i - 1] in braille.joongsung.values():  # i - 1이 모음이면
                     ptl.insert(i, "ㅇ")  # ㅇ 추가
                     i = i + 1
                 else:  # 모음이 안나왔으로 i - 1은 초성 or 종성 or 약자 셋 중 한개인데
@@ -139,7 +137,7 @@ def trans(li):
                             ptl.insert(i, "ㅇ")  # ㅇ 추가
                             i = i + 1
                     else:  # k - 1이 chojong의 키가 아니라는 것은 i - 1이 약자라는 뜻이고
-                        if ptl[i - 1] not in chosung.values():  # 그게 초성이 아니면
+                        if ptl[i - 1] not in braille.chosung.values():  # 그게 초성이 아니면
                             ptl.insert(i, "ㅇ")  # ㅇ 추가
                             i = i + 1
 
@@ -154,7 +152,7 @@ def trans(li):
     # print(plain_text)
     # print(join_jamos(plain_text))
     
-    return join_jamos(plain_text)
+    return unicode.join_jamos(plain_text)
             
 """
 ⠊⠗⠚⠒⠑⠟⠈⠍⠁ - 대한민국 ㅇ
