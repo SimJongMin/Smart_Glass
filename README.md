@@ -92,7 +92,7 @@ ___
        $ sudo pip install google-api-python-client
        $ cd
        $ vi ~/.bashrc
-       $ export GOOGLE_APPLICATION_CREDENTIALS=export GOOGLE_APPLICATION_CREDENTIALS="/home/pi/~/Smart_Glass/apiKey/smartglasss-acc1fs1065d3.json"
+       $ export GOOGLE_APPLICATION_CREDENTIALS=export GOOGLE_APPLICATION_CREDENTIALS="input own api path"
        :wq
        $ source ~/.bashrc
        ```
