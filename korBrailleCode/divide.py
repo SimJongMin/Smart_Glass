@@ -1,6 +1,8 @@
 from PIL import Image
 import os
-import DATAGenerator
+
+from korBrailleCode import DATAGenerator
+
 import math
 class img_devide():
     def __init__(self,img_path):

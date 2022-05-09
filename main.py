@@ -1,16 +1,6 @@
 from unicode import *
 from braille import *
-from preferredsoundplayer import playsound
 
-
-def speak(text):
-    currentTime=datetime.now()
-    now = currentTime.strftime("%Y%m%d-%H%M%S")
-    tts = gTTS(text = text, lang = 'ko')
-    path='./tts/sound/'
-    filename = '{0}.mp3'.format(now)
-    tts.save(path+filename)
-    playsound(path+filename)
 
 
 def trans(li):
@@ -18,10 +8,14 @@ def trans(li):
     plain_text = []
     chojong = {}  # 지금 자음이 초성인지 종성인지 구분하기 위해 사용. i: "초성" / i: "종성"
     leng = "kor"  # kor: 한글 / eng: 영어 / num: 숫자
+    dtl = []
     
-    dtl = li  # 점자 문자열 처리를 쉽게 하기 위해 리스트로 바꿈.
+    for lll in li:
+        dtl.append(str(lll))
+    
     while dtl:
         try:
+            print(dtl)
             if dtl[0] == "42":
                 dtl.pop(0)
                 continue
@@ -79,6 +73,7 @@ def trans(li):
                         dtl.pop(0)
                         continue
                 if dtl[0] in yakeo.keys():
+                    print()
                     if len(plain_text) > 0:
                         if plain_text[-1] == "ㅅ" and yakeo[dtl[0]] in ("ㄱㅏ", "ㄷㅏ", "ㅂㅏ", "ㅅㅏ", "ㅈㅏ"):
                             plain_text.pop()
@@ -159,7 +154,7 @@ def trans(li):
     # print(plain_text)
     # print(join_jamos(plain_text))
     
-    speak(join_jamos(plain_text))
+    return join_jamos(plain_text)
             
 """
 ⠊⠗⠚⠒⠑⠟⠈⠍⠁ - 대한민국 ㅇ

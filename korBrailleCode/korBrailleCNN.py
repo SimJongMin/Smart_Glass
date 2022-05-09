@@ -10,12 +10,12 @@ from keras.models import Model,load_model
 from keras.regularizers import l2
 from keras.callbacks import ModelCheckpoint,ReduceLROnPlateau,EarlyStopping
 import operator
-import Make_model
-import Rdy_image
-import DATAGenerator
-import divide
-import Predict
-import Load_model
+from korBrailleCode import Make_model
+from korBrailleCode import Rdy_image
+from korBrailleCode import DATAGenerator
+from korBrailleCode import divide
+from korBrailleCode import Predict
+from korBrailleCode import Load_model
 
 
 def dataCreateDiv():
@@ -58,12 +58,10 @@ def action():
     
     for i in range(0,a.lengh):
         a.devide_img()
-        real = DATAGenerator.load_image_single('./testDataset/')
+        real = DATAGenerator.load_image_single('./korBrailleCode/testDataset/')
         b.Predict_single(model,real)
         a.remove_file()
         
     b.composit()
     # print(b.result)
     return b.result
-
-action()

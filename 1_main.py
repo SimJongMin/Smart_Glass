@@ -1,16 +1,38 @@
-from camera import camera_capture
-from camera import processing
-from tts import imgTextTrans
+# from camera import camera_capture
+# from camera import processing
+# from tts import imgTextTrans
 from korBrailleCode import korBrailleCNN
-from Braille_Translator import main
+import main
+from datetime import datetime
+from gtts import gTTS
+from preferredsoundplayer import playsound
+# from korBrailleCode import Make_model
+# from korBrailleCode import Rdy_image
+# from korBrailleCode import DATAGenerator
+# from korBrailleCode import divide
+# from korBrailleCode import Predict
+# from korBrailleCode import Load_model
+
+
+# camera_capture.camera()
+# processing.camera_processing()
+
+def speak(text):
+    currentTime = datetime.now()
+    now = currentTime.strftime("%Y%m%d-%H%M%S")
+    tts = gTTS(text=text, lang='ko')
+    path = './tts/sound/'
+    filename = '{0}.mp3'.format(now)
+    tts.save(path+filename)
+    playsound(path+filename)
 
 
 
 
-camera_capture.camera()
-processing.camera_processing()
-
-main.trans(korBrailleCNN.action())  # fixme: playsound 함수 올바르게 적용되었는지 확인
 
 
-
+lists=korBrailleCNN.action()  
+print(lists)
+str=main.trans(lists)
+speak(str)
+# print(str)
