@@ -106,7 +106,7 @@ ___
        $ sudo apt-get  install  tesseract-ocr  libtesseract-dev libleptonica-dev 
        $ sudo apt-get install autoconf automake libtool pkg-config libpng12-dev libjpeg8-dev libtiff5-dev zlib1g-dev
        $ sudo apt-get install libleptonica-dev
-       $ sudo apt install tesseract-ocr tesseract-ocr -kor
+       $ sudo apt install tesseract-ocr tesseract-ocr-kor
        $ sudo apt install tesseract-ocr-script-hang tesseract-ocr-script-hang-vert
        $ sudo pip3 install pytesseract
        ```
