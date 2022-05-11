@@ -1,7 +1,8 @@
-# from camera import camera_capture
-# from camera import processing
-# from camera import findCircle
-# from tts import imgTextTrans
+import os
+import cv2, sys
+from matplotlib import pyplot as plt
+import numpy as np
+from camera import processing
 from korBrailleCode import korBrailleCNN
 from Braille_Translator import main
 from datetime import datetime
@@ -10,8 +11,8 @@ from preferredsoundplayer import playsound
 
 
 
-# camera_capture.camera()
-# processing.camera_processing()
+os.system("libcamera-still -o ./camera/images/captured.jpg")
+processing.camera_processing()
 # 원 카운팅->이미지 사이즈 조정
 # findCircle.findCircle()
 

@@ -1,12 +1,18 @@
-# from camera import camera_capture
-# from camera import processing
+import os
+import cv2
+import sys
+from matplotlib import pyplot as plt
+import numpy as np
+from camera import processing
 from tts import imgTextTrans
 from googletrans import Translator
 from preferredsoundplayer import playsound
 from gtts import gTTS
 from datetime import datetime
-# camera_capture.camera()
-# processing.camera_processing()
+
+
+os.system("libcamera-still -o ./camera/images/captured.jpg")
+processing.camera_processing()
 
 
 #comment: TTSv

@@ -73,8 +73,8 @@ org_image = cv2.imread('./images/trimed_image.png')
 #cv2.destroyAllWindows()
 """
 def camera_processing() :
-	image = cv2.imread('./images/captured.jpg')
-	image_gray = cv2.imread('./images/captured.jpg', cv2.IMREAD_GRAYSCALE)
+	image = cv2.imread('./camera/images/captured.jpg')
+	image_gray = cv2.imread('./camera/images/captured.jpg', cv2.IMREAD_GRAYSCALE)
 
 	b, g, r = cv2.split(image)
 	image2 = cv2.merge([r, g, b])
