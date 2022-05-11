@@ -3,6 +3,7 @@ import sys
 from matplotlib import pyplot as plt
 import numpy as np
 import math
+import resizing
 
 def langth(a, b):
     x = a[0]-b[0]
@@ -14,73 +15,65 @@ def langth(a, b):
         return False
 
 
+def findCircle():
+    #HoughCircles를 통해 원을 잡아내는 코드 정확도는 딱히.....
+    # image = cv2.imread('./images/goodDay.jpg')
+    # image = cv2.imread('./images/testImg.jpg')
+    image = cv2.imread('./images/data.jpg')
+    dst = image.copy()
 
 
-#HoughCircles를 통해 원을 잡아내는 코드 정확도는 딱히.....
-# image = cv2.imread('./images/goodDay.jpg')
-# image = cv2.imread('./images/testImg.jpg')
-image = cv2.imread('./images/data.jpg')
-dst = image.copy()
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # cv2.imshow("figure", image)
+    # cv2.waitKey(0)
+    # image = cv2.GaussianBlur(image, (0, 0), 1)
+    # cimage = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
+    circles = cv2.HoughCircles(image, cv2.HOUGH_GRADIENT, 1, 1, param1=90, param2=11, minRadius=0, maxRadius=10)
+    circles = np.uint16(np.around(circles))
+
+    for i in circles[0]:
+        cv2.circle(dst, (i[0], i[1]), i[2], (0, 255, 0), 2)
+
+    print(circles.shape[1])
+    # cv2.imshow("dst", dst)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
 
-image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-# cv2.imshow("figure", image)
-# cv2.waitKey(0)
-# image = cv2.GaussianBlur(image, (0, 0), 1)
-# cimage = cv2.cvtColor(image, cv2.COLOR_GRAY2BGR)
-circles = cv2.HoughCircles(image, cv2.HOUGH_GRADIENT, 1, 1, param1=90, param2=14, minRadius=0, maxRadius=10)
-circles = np.uint16(np.around(circles))
+    # 원 개수
+    circle_count = 0
+    cnd=0
+    detectCircleTuple=[]
+    t=[]
 
-for i in circles[0]:
-    cv2.circle(dst, (i[0], i[1]), i[2], (0, 255, 0), 2)
-
-print(circles.shape[1])
-# cv2.imshow("dst", dst)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
+    for c in circles[0]:
+        detectCircleTuple.append((c[0], c[1]))
 
 
-# 원 개수
-circle_count = 0
-cnd=0
-detectCircleTuple=[]
-t=[]
-
-for c in circles[0]:
-    detectCircleTuple.append((c[0], c[1]))
-
-
-for c in detectCircleTuple:
-    match = 0
-    if not t:
-        t.append(c)
-    else:
-        for tv in t:
-            if langth(c, tv):
-                match = match + 1
-                break
-        if match == 0:
+    for c in detectCircleTuple:
+        match = 0
+        if not t:
             t.append(c)
         else:
-            match = 0 
+            for tv in t:
+                if langth(c, tv):
+                    match = match + 1
+                    break
+            if match == 0:
+                t.append(c)
+            else:
+                match = 0 
         
-print(len(t))
-        
-
-
-
-
-
-# 겹치는 원 해결하기 위한 리스트 x, y좌표 +-2 이용
-
-
+    circle_counted = len(t)
+    
+    resizing.resizing(circle_counted)
 
 
 
 #print(circles.shape[1])
-cv2.imshow("dst", dst)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+#cv2.imshow("dst", dst)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
 
 
 
@@ -90,20 +83,15 @@ cv2.destroyAllWindows()
 
 '''#어느정도 되는 코드
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
 canny = cv2.Canny(gray, 60, 150, 3)
 # cv2.imshow("figure", canny)
 # cv2.waitKey(0)
-
 dilated = cv2.dilate(canny, (1, 1), iterations=0)
 # cv2.imshow("figure", dilated)
 # cv2.waitKey(0)
-
 (cnt, hierarchy) = cv2.findContours(dilated.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
 cv2.drawContours(rgb, cnt, -1, (0, 255, 0), 2)
-
 # cv2.imshow("figure", rgb)
 # cv2.waitKey(0)
 print("coins in the image : ", len(cnt))
