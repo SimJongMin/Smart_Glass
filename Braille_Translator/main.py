@@ -13,7 +13,7 @@ def trans(li):
     
     while dtl:
         try:
-            print(dtl)
+            # print(dtl)
             if dtl[0] == "42":
                 dtl.pop(0)
                 continue
@@ -71,7 +71,7 @@ def trans(li):
                         dtl.pop(0)
                         continue
                 if dtl[0] in braille.yakeo.keys():
-                    print()
+                    # print()
                     if len(plain_text) > 0:
                         if plain_text[-1] == "ㅅ" and braille.yakeo[dtl[0]] in ("ㄱㅏ", "ㄷㅏ", "ㅂㅏ", "ㅅㅏ", "ㅈㅏ"):
                             plain_text.pop()
@@ -108,8 +108,8 @@ def trans(li):
             else:
                 pass
     
-    print(plain_text)
-    print(chojong)
+    # print(plain_text)
+    # print(chojong)
     
     ptl = plain_text
     i = 0  # ptl에 접근하기 위함.

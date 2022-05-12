@@ -27,6 +27,6 @@ def speak(text):
 
 
 trans = Translator()
-str = imgTextTrans.mainStart(trans)
+str = imgTextTrans.mainStart(trans)     #fixme: 번역할 input image를 trimed_image이미지로 변환
 print(str)
 speak(str)

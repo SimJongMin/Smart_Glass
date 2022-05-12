@@ -8,13 +8,13 @@ from Braille_Translator import main
 from datetime import datetime
 from gtts import gTTS
 from preferredsoundplayer import playsound
-
+from camera import resizing
 
 
 os.system("libcamera-still -o ./camera/images/captured.jpg")
 processing.camera_processing()
-# 원 카운팅->이미지 사이즈 조정
-# findCircle.findCircle()
+resizing.resizing()
+
 
 
 def speak(text):
@@ -28,7 +28,7 @@ def speak(text):
 
 
 
-lists=korBrailleCNN.action()  
+lists=korBrailleCNN.action()                #fixme: input img를 resizing_image로 바꾸기
 print(lists)
 str=main.trans(lists)
 speak(str)
