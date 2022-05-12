@@ -11,8 +11,8 @@ from gtts import gTTS
 from datetime import datetime
 
 
-os.system("libcamera-still -o ./camera/images/captured.jpg")
-processing.camera_processing()
+#os.system("libcamera-still -o ./camera/images/captured.jpg")
+#processing.camera_processing()
 
 
 #comment: TTSv

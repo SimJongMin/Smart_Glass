@@ -11,7 +11,7 @@ from preferredsoundplayer import playsound
 from camera import resizing
 
 
-os.system("libcamera-still -o ./camera/images/captured.jpg")
+#os.system("libcamera-still -o ./camera/images/captured.jpg")
 processing.camera_processing()
 resizing.resizing()
 

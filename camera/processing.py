@@ -73,8 +73,8 @@ org_image = cv2.imread('./images/trimed_image.png')
 #cv2.destroyAllWindows()
 """
 def camera_processing() :
-	image = cv2.imread('./camera/images/captured.jpg')
-	image_gray = cv2.imread('./camera/images/captured.jpg', cv2.IMREAD_GRAYSCALE)
+	image = cv2.imread('./images/brailleTest1.jpg')
+	image_gray = cv2.imread('./images/brailleTest1.jpg', cv2.IMREAD_GRAYSCALE)
 
 	b, g, r = cv2.split(image)
 	image2 = cv2.merge([r, g, b])
@@ -116,8 +116,8 @@ def camera_processing() :
 			value.append(contours_xy[i][j][0][0]) #네번째 괄호가 0일때 x의 값
 			x_min = min(value)
 			x_max = max(value)
-	print(x_min)
-	print(x_max)
+	print("x_min : %d"%(x_min))
+	print("x_max : %d"%(x_max))
  
 	# y의 min과 max 찾기
 	y_min, y_max = 0,0
@@ -127,8 +127,8 @@ def camera_processing() :
 			value.append(contours_xy[i][j][0][1]) #네번째 괄호가 0일때 x의 값
 			y_min = min(value)
 			y_max = max(value)
-	print(y_min)
-	print(y_max)
+	print("y_min : %d"%(y_min))
+	print("y_max : %d"%(y_max))
 
 	x = x_min
 	y = y_min
@@ -137,11 +137,11 @@ def camera_processing() :
 
 	img_trim = image[y:y+h, x:x+w]
 	cv2.imwrite('./images/trimed_image.jpg', img_trim)
-	# org_image = cv2.imread('./images/trimed_image.jpg')
-	# cv2.imshow('org_image', org_image)
+	org_image = cv2.imread('./images/trimed_image.jpg')
+	#cv2.imshow('org_image', org_image)
 
-	# cv2.waitKey(0)
-	# cv2.destroyAllWindows()
+	#cv2.waitKey(0)
+	#cv2.destroyAllWindows()
 
 
 
