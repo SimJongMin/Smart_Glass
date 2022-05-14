@@ -65,3 +65,29 @@ def action():
     b.composit()
     # print(b.result)
     return b.result
+
+def serverAction(image):
+    #COMMENT: 사진 데이터 불러오기, 예측
+    # realBraillePicturePath = './images/위아더웨더.jpg'
+    realBraillePicturePath=image
+    
+    model=modelCreateLoad()
+    
+    # Predict.chk_trans()
+    b = Predict.Predic()
+    a = divide.img_devide(realBraillePicturePath)
+    
+    a.create_dir()
+    a.set_image()
+    b.reset()
+    
+    for i in range(0,a.lengh):
+        a.devide_img()
+        real = DATAGenerator.load_image_single('./korBrailleCode/testDataset/')
+        b.Predict_single(model,real)
+        a.remove_file()
+        
+    b.composit()
+    # print(b.result)
+    return b.result
+
