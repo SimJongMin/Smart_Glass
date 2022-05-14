@@ -1,4 +1,3 @@
-import os
 import cv2, sys
 from matplotlib import pyplot as plt
 import numpy as np
@@ -11,8 +10,8 @@ from preferredsoundplayer import playsound
 from camera import resizing
 
 
-#os.system("libcamera-still -o ./camera/images/captured.jpg")
-processing.camera_processing()
+
+processing.camera_processing("./images/brailleTest1.jpg")
 resizing.resizing()
 
 
@@ -27,9 +26,9 @@ def speak(text):
     playsound(path+filename)
 
 
-
-lists=korBrailleCNN.action()                #fixme: input img를 resizing_image로 바꾸기
-print(lists)
-str=main.trans(lists)
-speak(str)
-print(str)
+for _ in range(2):
+    lists=korBrailleCNN.action()                
+    print(lists)
+    str=main.trans(lists)
+    speak(str)
+    print(str)

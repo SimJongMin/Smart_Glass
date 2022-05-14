@@ -82,6 +82,8 @@ class Predic():
     def reset(self):
         self.result = []
         self.count=0
+        self.single_index=[]
+        self.single_result=[]
 
 
 #COMMENT : 예측한 사진의 인덱스와 VALUE를 출력하는 함수
