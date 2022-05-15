@@ -38,44 +38,58 @@ class Predic():
             if(x==0):
                 self.result.append(self.single_result[x])
                 continue
-            if(self.single_result[x]==19 and self.single_result[x-1]==29):           #COMMENT : ㅟ
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,100)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==20):         #COMMENT : ㅒ
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,101)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==26):         #COMMENT : ㅙ
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,102)
-            elif(self.single_result[x]==19 and self.single_result[x-1]==30):         #COMMENT : ㅞ
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,103)
-            elif(self.single_result[x]==21 and self.single_result[x-1]==36):         #COMMENT : 것 
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,104)
-            elif(self.single_result[x]==21 and self.single_result[x-1]==2):          #COMMENT : 그래서
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,105)
-            elif(self.single_result[x]==37 and self.single_result[x-1]==2):          #COMMENT : 그러나 
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,106)
-            elif(self.single_result[x]==3 and self.single_result[x-1]==2):           #COMMENT : 그러면 
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,107)
-            elif(self.single_result[x]==7 and self.single_result[x-1]==2):           #COMMENT : 그러므로
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,108)
-            elif(self.single_result[x]==22 and self.single_result[x-1]==2):          #COMMENT : 그런데 
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,109)
-            elif(self.single_result[x]==25 and self.single_result[x-1]==2):          #COMMENT : 그리고 
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,110)
-            elif(self.single_result[x]==23 and self.single_result[x-1]==2):          #COMMENT : 그리하여 
-                self.result.remove(self.single_result[x-1])
-                self.result.insert(x-1,111)
             else:
-                self.result.append(self.single_result[x])                            #COMMENT : 일반 점자 
+                if(self.single_result[x]==20 and self.single_result[x-1]==30):           #COMMENT : ㅟ
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,100)
+                    
+                elif(self.single_result[x]==20 and self.single_result[x-1]==21):         #COMMENT : ㅒ
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,101)
+                    
+                elif(self.single_result[x]==20 and self.single_result[x-1]==27):         #COMMENT : ㅙ
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,102)
+                    
+                elif(self.single_result[x]==20 and self.single_result[x-1]==31):         #COMMENT : ㅞ
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,103)
+                    
+                elif(self.single_result[x]==22 and self.single_result[x-1]==37):         #COMMENT : 것
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,104)
+                    
+                elif(self.single_result[x]==22 and self.single_result[x-1]==2):          #COMMENT : 그래서
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,105)
+                    
+                elif(self.single_result[x]==38 and self.single_result[x-1]==2):          #COMMENT : 그러나 
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,106)
+                    
+                elif(self.single_result[x]==3 and self.single_result[x-1]==2):           #COMMENT : 그러면 
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,107)
+                    
+                elif(self.single_result[x]==7 and self.single_result[x-1]==2):           #COMMENT : 그러므로
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,108)
+                    
+                elif(self.single_result[x]==23 and self.single_result[x-1]==2):          #COMMENT : 그런데 
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,109)
+                    
+                elif(self.single_result[x]==26 and self.single_result[x-1]==2):          #COMMENT : 그리고 
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,110)
+                    
+                elif(self.single_result[x]==24 and self.single_result[x-1]==2):          #COMMENT : 그리하여 
+                    self.result.remove(self.single_result[x-1])
+                    self.result.insert(x-1,111)
+                    
+                else:
+                    self.result.append(self.single_result[x])                            #COMMENT : 일반 점자 
+        
         return self.result        
 
 
