@@ -1,7 +1,7 @@
 from ctypes.wintypes import RGB
 from PIL import Image
 from datetime import datetime
-import pytesseract
+# import pytesseract
 from googletrans import Translator
 import cv2
 import numpy as np
@@ -14,6 +14,9 @@ def detect_text(path):
     """Detects text in the file."""
     from google.cloud import vision
     import io
+    import os
+
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "./apiKey/potent-smithy-349713-8f1ceac136e4.json"
     client = vision.ImageAnnotatorClient()
 
     with io.open(path, 'rb') as image_file:
@@ -62,9 +65,20 @@ def mainStart(trans):
     # comment: 입력 사진 path
     # path="./tts/img/"
     path = "./images/"
-    img = "sampleKor.jpg"
+    img = "sampleEn.jpg"
 
     pathImg=path+img
+
+    str=transSpeak(pathImg, trans)
+    return str
+
+def serverMainStart(trans, image):
+    # comment: 입력 사진 path
+    # path="./tts/img/"
+    #path = "./images/"
+    img = image
+
+    pathImg=img
 
     str=transSpeak(pathImg, trans)
     return str
