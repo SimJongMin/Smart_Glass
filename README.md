@@ -122,7 +122,7 @@ ___
 
 ___
 
-## 3. Add omission file 
+## 3. Add omission file
 
 * Add "sound" folder    (start at pwd ~./Smart_Glass)
     * path : ./tts/sound
@@ -138,6 +138,7 @@ ___
         ```bash
         $ cd korBrailleCode
         $ mkdir testDataset
+        $ mkdir PresetData
         $ cd testDataset   
         $ mkdir a
         ```
@@ -145,10 +146,11 @@ ___
     * path : ./EnBrailleCode/testDataset/a
 
         ```bash
-        $cd EnBrailleCode
-        $mkdir testDataset
-        $cd testDataset
-        $mkdir a
+        $ cd EnBrailleCode
+        $ mkdir testDataset
+        $ mkdir PresetData
+        $ cd testDataset
+        $ mkdir a
         ```
 
 ___
