@@ -91,5 +91,3 @@ def serverAction(image):
     b.composit()
     # print(b.result)
     return b.result
-
-action()
