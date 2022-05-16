@@ -1,7 +1,8 @@
 from PIL import Image
 import os
 
-from korBrailleCode import DATAGenerator
+# from korBrailleCode import DATAGenerator
+import DATAGenerator
 
 import math
 class img_devide():
@@ -17,13 +18,11 @@ class img_devide():
 
     def create_dir(self):
         try:
-            #os.mkdir('./korBrailleCode/testDataset/a/')     
             os.mkdir('./korBrailleCode/testDataset/a/')  
             print('create new dir')
         except:
             print('already exist')
-            pass
-        #self.path = './korBrailleCode/testDataset/a'        
+            pass     
         self.path = './korBrailleCode/testDataset/a'
 
     def devide_img(self):

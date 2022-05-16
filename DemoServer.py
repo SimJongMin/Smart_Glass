@@ -20,7 +20,7 @@ while True:
     data = client_socket.recv(4)  # 전송받을 이미지의 크기
     img_size = int.from_bytes(data, "little")
 
-    file = open("recieved.jpg", 'wb')
+    file = open("./demoImage/recieved.jpg", 'wb')
     transfered = 0
     while transfered < img_size:
         data = client_socket.recv(img_size)  # 이미지
@@ -32,7 +32,7 @@ while True:
     if prtc == 0:
         print("서버: 1_main 점자 번역 모드.")
 
-        lists = korBrailleCNN.serverAction("recieved.jpg")
+        lists = korBrailleCNN.serverAction("./demoImage/recieved.jpg")
         plain_text = main.trans(lists)
 
         client_socket.send(plain_text.encode('utf-8'))
@@ -42,7 +42,7 @@ while True:
         print("서버: 2_main 글자 번역 모드.")
 
         trans = Translator()
-        plain_text = imgTextTrans.serverMainStart(trans, "recieved.jpg")
+        plain_text = imgTextTrans.serverMainStart(trans, "./demoImage/recieved.jpg")
 
         client_socket.send(plain_text.encode('utf-8'))
         print("서버: 2_main 번역 송신 완료.")

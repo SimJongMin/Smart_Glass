@@ -19,7 +19,7 @@ def speak(text):
 
 PROTOCOL = 1
 
-img = './images/sampleKor.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+img = './demoImage/tts/sampleKor.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)
 
 socket = socket(AF_INET, SOCK_STREAM)

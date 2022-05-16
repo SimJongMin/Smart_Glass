@@ -19,7 +19,7 @@ def speak(text):
 
 PROTOCOL = 0
 
-img = './images/운수좋은날.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+img = './demoImage/Braille/운수좋은날.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)
 
 socket = socket(AF_INET, SOCK_STREAM)

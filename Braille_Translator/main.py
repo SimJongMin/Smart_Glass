@@ -150,8 +150,7 @@ def trans(li):
     plain_text = "".join(ptl)
     
     # print(plain_text)
-    # print(join_jamos(plain_text))
-    
+    print(unicode.join_jamos(plain_text))
     return unicode.join_jamos(plain_text)
             
 """
