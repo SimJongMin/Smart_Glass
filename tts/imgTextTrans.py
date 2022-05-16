@@ -57,7 +57,6 @@ def transSpeak(imgPath, trans):
     elif(lang.lang == 'en'):
         res = trans.translate(imgToStr.strip(), dest="ja")
         res = trans.translate(res.text.strip(), dest="ko")
-
         return res.text.strip()
 
 
@@ -75,10 +74,9 @@ def mainStart(trans):
 def serverMainStart(trans, image):
     # comment: 입력 사진 path
     # path="./tts/img/"
-    #path = "./images/"
-    img = image
+    #path = "./images/
 
-    pathImg=img
+    pathImg=image
 
     str=transSpeak(pathImg, trans)
     return str

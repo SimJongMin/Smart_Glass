@@ -31,7 +31,3 @@ for i in range(0, r.size[0]):
 #plt.show()
 
 r.save("./images/test_colorChanged.jpg")
-        
-
-        
-        

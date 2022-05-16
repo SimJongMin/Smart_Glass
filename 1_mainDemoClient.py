@@ -1,10 +1,16 @@
 # 1_main 클라이언트
 
 import os
+import cv2
+import sys
+from matplotlib import pyplot as plt
+import numpy as np
 from socket import *
 from datetime import datetime
 from gtts import gTTS
 from preferredsoundplayer import playsound
+from camera import processing
+from camera import resizing
 
 
 def speak(text):
@@ -18,12 +24,15 @@ def speak(text):
 
 
 PROTOCOL = 0
+num=int(sys.argv[1])
+processing.camera_processing("./demoImage/Braille/brailleTest2.jpg")
+resizing.resizing(num)
 
-img = './demoImage/Braille/운수좋은날.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+img = './demoImage/Braille/resized_image.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)
 
 socket = socket(AF_INET, SOCK_STREAM)
-socket.connect(('192.168.219.103', 9658))
+socket.connect(('127.0.0.1', 9658))
 print("클라이언트: 서버 접속 완료.")
 
 socket.send(PROTOCOL.to_bytes(4, byteorder = "little"))
