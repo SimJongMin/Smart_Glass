@@ -1,8 +1,7 @@
 from PIL import Image
 import os
 
-# from korBrailleCode import DATAGenerator
-import DATAGenerator
+from korBrailleCode import DATAGenerator
 
 import math
 class img_devide():
