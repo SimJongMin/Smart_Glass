@@ -24,8 +24,9 @@ def speak(text):
 
 
 PROTOCOL = 0
-num=int(sys.argv[1])
-processing.camera_processing("./demoImage/Braille/brailleTest2.jpg")
+num=int(sys.argv[2])
+img=sys.argv[1]
+processing.camera_processing("./demoImage/Braille/"+img)
 resizing.resizing(num)
 
 img = './demoImage/Braille/resized_image.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
