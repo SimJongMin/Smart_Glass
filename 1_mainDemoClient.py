@@ -22,10 +22,21 @@ def speak(text):
     tts.save(path+filename)
     playsound(path+filename)
 
+# 카메라 함수
+def camera1(img) : 
+    camera = PiCamera()
+
+    camera.start_preview()
+    sleep(3)
+    camera.capture("./demoImage/Braille/"+img) # 경로 수정 필요
+    camera.stop_preview()    
 
 PROTOCOL = 0
 num=int(sys.argv[2])
 img=sys.argv[1]
+
+camera1(img) # 카메라 함수 집어넣은거
+
 processing.camera_processing("./demoImage/Braille/"+img)
 resizing.resizing(num)
 
