@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 from camera import processing
 from korBrailleCode import korBrailleCNN
-from Braille_Translator import main
+from Braille_Translator import translate_braille
 from datetime import datetime
 from gtts import gTTS
 from preferredsoundplayer import playsound
@@ -29,6 +29,6 @@ def speak(text):
 for _ in range(2):
     lists=korBrailleCNN.action()                
     print(lists)
-    str=main.trans(lists)
+    str=translate_braille.trans(lists)
     speak(str)
     print(str)

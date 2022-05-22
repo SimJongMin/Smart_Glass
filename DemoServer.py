@@ -1,6 +1,6 @@
 from socket import *
 from korBrailleCode import korBrailleCNN
-from Braille_Translator import main
+from Braille_Translator import translate_braille
 from tts import imgTextTrans
 from googletrans import Translator
 
@@ -33,7 +33,7 @@ while True:
         print("서버: 1_main 점자 번역 모드.")
 
         lists = korBrailleCNN.serverAction("./demoImage/recieved.jpg")
-        plain_text = main.trans(lists)
+        plain_text = translate_braille.trans(lists)
 
         client_socket.send(plain_text.encode('utf-8'))
         print("서버: 1_main 번역 송신 완료.")
