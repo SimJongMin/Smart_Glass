@@ -70,7 +70,7 @@ def camera_processing(path) :
 
 	img_trim = image[y:y+h, x:x+w]
 	cv2.imwrite('./demoImage/Braille/trimed_image.jpg', img_trim)
-	org_image = cv2.imread('./demoImage/Braille/trimed_image.jpg')
+	#org_image = cv2.imread('./demoImage/Braille/trimed_image.jpg')
 	#cv2.imshow('org_image', org_image)
 
 	#cv2.waitKey(0)
