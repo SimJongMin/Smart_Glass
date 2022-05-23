@@ -54,6 +54,159 @@ def Make_model(train,val):
     return history
 
 
+def Make_noise_model(train, val):
+    K.clear_session()
+
+    model_ckpt = ModelCheckpoint('./korBrailleCode/noiseKorBrailleNet.h5', save_best_only=True)
+    reduce_lr = ReduceLROnPlateau(patience=8, verbose=1)
+    early_stop = EarlyStopping(patience=5, verbose=2, monitor='accuracy')
+
+    entry = L.Input(shape=(50, 58, 3))
+    x = L.SeparableConv2D(64, (5, 5), activation='relu', padding='same')(entry)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(128, (5, 5), activation='relu', padding='same')(entry)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(256, (5, 5), activation='relu', padding='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(512, (5, 5), activation='relu', padding='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.GlobalMaxPooling2D()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.Dense(512)(x)
+    x = L.LeakyReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(256)(x)
+    x = L.ReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(128, kernel_regularizer=l2(2e-4))(x)
+    x = L.ReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(64, activation='softmax')(x)
+
+    model = Model(entry, x)
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+    history = model.fit_generator(train, validation_data=val, epochs=100, callbacks=[model_ckpt, reduce_lr, early_stop], verbose=2)
+    return history
+
+
+def Make_capture_model(train, val):
+    K.clear_session()
+
+    model_ckpt = ModelCheckpoint(
+        './korBrailleCode/captureKorBrailleNet.h5', save_best_only=True)
+    reduce_lr = ReduceLROnPlateau(patience=8, verbose=1)
+    early_stop = EarlyStopping(patience=5, verbose=2, monitor='accuracy')
+
+    entry = L.Input(shape=(50, 58, 3))
+    x = L.SeparableConv2D(64, (5, 5), activation='relu', padding='same')(entry)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(128, (5, 5), activation='relu',
+                          padding='same')(entry)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(256, (5, 5), activation='relu', padding='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(512, (5, 5), activation='relu', padding='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.GlobalMaxPooling2D()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.Dense(512)(x)
+    x = L.LeakyReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(256)(x)
+    x = L.ReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(128, kernel_regularizer=l2(2e-4))(x)
+    x = L.ReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(64, activation='softmax')(x)
+
+    model = Model(entry, x)
+    model.compile(loss='categorical_crossentropy',
+                  optimizer='adam', metrics=['accuracy'])
+
+    history = model.fit_generator(train, validation_data=val, epochs=100, callbacks=[
+                                  model_ckpt, reduce_lr, early_stop], verbose=2)
+    return history
+
+
+def Make_total_model(train, val):
+    K.clear_session()
+
+    model_ckpt = ModelCheckpoint(
+        './korBrailleCode/totalKorBrailleNet.h5', save_best_only=True)
+    reduce_lr = ReduceLROnPlateau(patience=8, verbose=1)
+    early_stop = EarlyStopping(patience=5, verbose=2, monitor='accuracy')
+
+    entry = L.Input(shape=(50, 58, 3))
+    x = L.SeparableConv2D(64, (5, 5), activation='relu', padding='same')(entry)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(128, (5, 5), activation='relu',
+                          padding='same')(entry)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(256, (5, 5), activation='relu', padding='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.MaxPooling2D((2, 2))(x)
+    # x = L.BatchNormalization()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.SeparableConv2D(512, (5, 5), activation='relu', padding='same')(x)
+    x = L.BatchNormalization()(x)
+    x = L.GlobalMaxPooling2D()(x)
+    # x = L.Dropout(0.5)(x)
+
+    x = L.Dense(512)(x)
+    x = L.LeakyReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(256)(x)
+    x = L.ReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(128, kernel_regularizer=l2(2e-4))(x)
+    x = L.ReLU()(x)
+    x = L.Dropout(0.5)(x)
+    x = L.Dense(64, activation='softmax')(x)
+
+    model = Model(entry, x)
+    model.compile(loss='categorical_crossentropy',
+                  optimizer='adam', metrics=['accuracy'])
+
+    history = model.fit_generator(train, validation_data=val, epochs=100, callbacks=[
+                                  model_ckpt, reduce_lr, early_stop], verbose=2)
+    return history
 
 def print_acc_loss(history):
     #COMMENT : 평가 결과 도식화

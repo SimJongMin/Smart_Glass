@@ -11,6 +11,7 @@ from gtts import gTTS
 from preferredsoundplayer import playsound
 from camera import processing
 from camera import resizing
+from camera import camera_capture
 
 
 def speak(text):
@@ -23,21 +24,20 @@ def speak(text):
     playsound(path+filename)
 
 # 카메라 함수
-def camera1(img) : 
+def camera1() : 
     camera = PiCamera()
-
     camera.start_preview()
     sleep(3)
-    camera.capture("./demoImage/Braille/"+img) # 경로 수정 필요
+    camera.capture("./demoImage/capture.jpg") # 경로 수정 필요
     camera.stop_preview()    
 
 PROTOCOL = 0
-num=int(sys.argv[2])
-img=sys.argv[1]
+num=int(sys.argv[1])
 
-camera1(img) # 카메라 함수 집어넣은거
+# camera1() # comment: 라즈베리파이 3에서 사용하는 촬영 코드
+camera_capture.camera()    # comment: 라즈베리파이 4에서 사용하는 촬영 코드
 
-processing.camera_processing("./demoImage/Braille/"+img)
+processing.camera_processing("./demoImage/capture.jpg")
 resizing.resizing(num)
 
 img = './demoImage/Braille/resized_image.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.

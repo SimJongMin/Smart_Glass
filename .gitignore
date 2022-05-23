@@ -14,6 +14,15 @@ tts/__pycache__
 #학습 데이터 제외
 EnBrailleCode/PresetData/
 korBrailleCode/PresetData/
+korBrailleCode/noisePresetData/
+korBrailleCode/capturePresetData/
+korBrailleCode/totalPresetData/
+korBrailleCode/noiseAdded_images/
+korBrailleCode/camera_capture_images/
+# korBrailleCode/korBrailleImage/
+
+Todo.txt
+
 
 #TEST파일 제외
 korBrailleCode/test.py

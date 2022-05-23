@@ -17,7 +17,7 @@ def speak(text):
     
     
 camera_capture.camera()
-image_path = "./images/captured.jpg"
+image_path = "./demoImage/captured.jpg"
 
 car = detect_car.carRecognize(image_path)
 if car > 0:

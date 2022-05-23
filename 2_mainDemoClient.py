@@ -1,5 +1,5 @@
 # 2_main 클라이언트
-
+import sys
 import os
 from socket import *
 from datetime import datetime
@@ -18,8 +18,9 @@ def speak(text):
 
 
 PROTOCOL = 1
-
-img = './demoImage/tts/sampleEn3.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+name=sys.argv[1]
+imgPath="./demoImage/tts/"
+img = imgPath+name  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)
 
 socket = socket(AF_INET, SOCK_STREAM)

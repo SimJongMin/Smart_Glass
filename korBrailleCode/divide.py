@@ -2,6 +2,7 @@ from PIL import Image
 import os
 
 from korBrailleCode import DATAGenerator
+# import DATAGenerator
 
 import math
 class img_devide():

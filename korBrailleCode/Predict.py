@@ -27,7 +27,7 @@ class Predic():
     def Predict_single(self,model,real):
         my_list = model.predict(real)
         index, value = max(enumerate(my_list[0]), key=operator.itemgetter(1))
-        # check_acc(my_list,index,value)                #COMMENT : 예측할 사진의 개별 인덱스와 VALUE값을 출력하고 싶으면 주석 해제
+        #check_acc(my_list,index,value)                #COMMENT : 예측할 사진의 개별 인덱스와 VALUE값을 출력하고 싶으면 주석 해제
         self.single_index.append(self.count)
         self.single_result.append(index)
         self.count+=1
