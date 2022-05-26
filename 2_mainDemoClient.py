@@ -18,7 +18,7 @@ def speak(text):
 
 
 PROTOCOL = 1
-name=sys.argv[1]
+name=sys.argv[1]            # 글자 이미지 파일 이름을 인자로 넣어 준다.
 imgPath="./demoImage/tts/"
 img = imgPath+name  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)

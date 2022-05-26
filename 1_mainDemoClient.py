@@ -1,5 +1,4 @@
 # 1_main 클라이언트
-
 import os
 import cv2
 import sys
@@ -23,24 +22,11 @@ def speak(text):
     tts.save(path+filename)
     playsound(path+filename)
 
-# 카메라 함수
-def camera1() : 
-    camera = PiCamera()
-    camera.start_preview()
-    sleep(3)
-    camera.capture("./demoImage/capture.jpg") # 경로 수정 필요
-    camera.stop_preview()    
-
 PROTOCOL = 0
-num=int(sys.argv[1])
 
-# camera1() # comment: 라즈베리파이 3에서 사용하는 촬영 코드
-camera_capture.camera()    # comment: 라즈베리파이 4에서 사용하는 촬영 코드
+fileName=sys.argv[1]
 
-processing.camera_processing("./demoImage/capture.jpg")
-resizing.resizing(num)
-
-img = './demoImage/Braille/resized_image.jpg'  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+img = './demoImage/Braille/'+fileName  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)
 
 socket = socket(AF_INET, SOCK_STREAM)
@@ -62,3 +48,8 @@ socket.close()
 
 print(plain_text)
 speak(plain_text)
+
+
+'''
+이미지 파일명을 argv로 받아서 이미지를 서버에 보낸다.
+'''

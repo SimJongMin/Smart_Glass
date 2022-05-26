@@ -18,23 +18,22 @@ def camera_processing(path) :
 	#plt.show()
 
 	#cv2.imshow('image', image)
-	#cv2.imshow('image_gray', image_gray)
-
-	#cv2.waitKey(0)
-	#cv2.destroyAllWindows()
+	cv2.imshow('image_gray', image_gray)
+	cv2.waitKey(0)
+	cv2.destroyAllWindows()
 
 	blur = cv2.GaussianBlur(image_gray, ksize=(1, 1), sigmaX=0)
 	ret, thresh1 = cv2.threshold(blur, 127, 255, cv2.THRESH_BINARY)
 
 
 	edged = cv2.Canny(blur, 10, 250)
-	#cv2.imshow('Edged', edged)
-	#cv2.waitKey(0)
+	cv2.imshow('Edged', edged)
+	cv2.waitKey(0)
 
 	kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 7))
 	closed = cv2.morphologyEx(edged, cv2.MORPH_CLOSE, kernel)
-	#cv2.imshow('closed', closed)
-	#cv2.waitKey(0)
+	cv2.imshow('closed', closed)
+	cv2.waitKey(0)
 
 	contours, _ = cv2.findContours(closed.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 	total = 0
@@ -70,12 +69,8 @@ def camera_processing(path) :
 
 	img_trim = image[y:y+h, x:x+w]
 	cv2.imwrite('./demoImage/Braille/trimed_image.jpg', img_trim)
-	#org_image = cv2.imread('./demoImage/Braille/trimed_image.jpg')
-	#cv2.imshow('org_image', org_image)
-
-	#cv2.waitKey(0)
-	#cv2.destroyAllWindows()
-
-
-
-# camera_processing()
+	org_image = cv2.imread('./demoImage/Braille/trimed_image.jpg')
+	cv2.imshow('org_image', org_image)
+ 
+	cv2.waitKey(0)
+	cv2.destroyAllWindows()
