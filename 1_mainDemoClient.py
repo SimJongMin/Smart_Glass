@@ -1,16 +1,11 @@
 # 1_main 클라이언트
 import os
-import cv2
 import sys
-from matplotlib import pyplot as plt
-import numpy as np
 from socket import *
 from datetime import datetime
 from gtts import gTTS
 from preferredsoundplayer import playsound
-from camera import processing
-from camera import resizing
-from camera import camera_capture
+
 
 
 def speak(text):

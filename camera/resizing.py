@@ -1,6 +1,6 @@
 
 import cv2
-import numpy as np
+
 
 def resizing(num):
     img = cv2.imread('./demoImage/Braille/trimed_image.jpg')

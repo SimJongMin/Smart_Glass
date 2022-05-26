@@ -1,15 +1,3 @@
-import os
-import numpy as np
-import pandas as pd
-from PIL import Image
-from shutil import copyfile
-from keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
-from keras import backend as K
-from keras import layers as L
-from keras.models import Model,load_model
-from keras.regularizers import l2
-from keras.callbacks import ModelCheckpoint,ReduceLROnPlateau,EarlyStopping
-import operator
 from korBrailleCode import Make_model
 from korBrailleCode import Rdy_image
 from korBrailleCode import DATAGenerator
@@ -59,7 +47,7 @@ def modelCreateLoad():
 
 def action():
     #COMMENT: 사진 데이터 불러오기, 예측
-    realBraillePicturePath = './demoImage/Braille/braille_image1.jpg'
+    realBraillePicturePath = './demoImage/Braille/라즈베리파이4_14.jpg'
     # realBraillePicturePath='./images/resized_image.jpg'
     
     model=modelCreateLoad()

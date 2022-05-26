@@ -1,5 +1,5 @@
 from PIL import Image
-import matplotlib.pylab as plt
+
 
 r = Image.open("./images/test_trimed.jpg")
 #plt.imshow(r)

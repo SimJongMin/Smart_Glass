@@ -1,6 +1,4 @@
 import cv2
-import sys
-from matplotlib import pyplot as plt
 import numpy as np
 import math
 import resizing

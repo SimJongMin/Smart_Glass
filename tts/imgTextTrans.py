@@ -1,13 +1,8 @@
-from ctypes.wintypes import RGB
-from PIL import Image
 from datetime import datetime
-# import pytesseract
 from googletrans import Translator
-import cv2
-import numpy as np
 from gtts import gTTS
 from preferredsoundplayer import playsound
-#from playsound import playsound
+
 
 #comment: 이미지 텍스트화
 def detect_text(path):
@@ -62,13 +57,15 @@ def transSpeak(imgPath, trans):
 
 def mainStart(trans):
     # comment: 입력 사진 path
-    # path="./tts/img/"
-    path = "./images/"
+    # path="./demoImage/"
+    path = "./demoImage/tts/"
     img = "sampleEn.jpg"
 
     pathImg=path+img
 
     str=transSpeak(pathImg, trans)
+    print(str)
+    speak(str)
     return str
 
 def serverMainStart(trans, image):
@@ -80,3 +77,7 @@ def serverMainStart(trans, image):
 
     str=transSpeak(pathImg, trans)
     return str
+
+
+trans = Translator()
+mainStart(trans)

@@ -1,6 +1,5 @@
 from keras import backend as K
 from keras import layers as L
-import tensorflow as tf
 from keras.models import Model
 from keras.regularizers import l2
 from keras.callbacks import ModelCheckpoint,ReduceLROnPlateau,EarlyStopping
