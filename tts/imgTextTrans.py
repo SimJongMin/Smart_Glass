@@ -79,5 +79,3 @@ def serverMainStart(trans, image):
     return str
 
 
-trans = Translator()
-mainStart(trans)

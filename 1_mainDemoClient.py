@@ -5,6 +5,17 @@ from socket import *
 from datetime import datetime
 from gtts import gTTS
 from preferredsoundplayer import playsound
+from camera import processing
+from camera import resizing
+
+'''
+매개변수 : 점자 이미지 파일명
+'''
+
+filedic = {1: "라즈베리파이4_14.jpg", 2: "소고기입니다_11.jpg", 3: "안녕하세요_8.jpg", 4: "오늘의점심은_12.jpg", 5: "운수좋은날.jpg",
+           6: "인간실격_43.jpg", 5: "점자가인식되었습니다_11.jpg", 6: "하루되세요_9.jpg", 7: "한성대학교2022캡스톤디자인_29.jpg", 8: "행복한_8.jpg"}
+
+
 
 
 
@@ -19,13 +30,26 @@ def speak(text):
 
 PROTOCOL = 0
 
-fileName=sys.argv[1]
+# key=sys.argv[1]
+# temp1=filedic[key].split("_")
+# res=temp1[1].split(".")
+# num=int(res)
+num=sys.argv[1]
 
-img = './demoImage/Braille/'+fileName  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+
+
+os.system("libcamera-jpeg -o ./demoImage/capture.jpg")
+# processing.camera_processing("./demoImage/Braille/"+filedic[key])
+# resizing.resizing(num)
+processing.camera_processing("./demoImage/Braille/brailleTest1.jpg")
+resizing.resizing(num)
+
+# img = './demoImage/Braille/'+filedic[key]  # 여기에 카메라로 찍은 사진을 넣으면 된다.
+img="./demoImage/Braille/resized_image.jpg"
 img_size = os.path.getsize(img)
 
 socket = socket(AF_INET, SOCK_STREAM)
-socket.connect(('127.0.0.1', 9658))
+socket.connect(('192.168.219.108', 9658))
 print("클라이언트: 서버 접속 완료.")
 
 socket.send(PROTOCOL.to_bytes(4, byteorder = "little"))

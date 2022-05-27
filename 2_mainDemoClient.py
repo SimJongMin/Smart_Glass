@@ -4,7 +4,13 @@ import os
 from socket import *
 from datetime import datetime
 from gtts import gTTS
+import cv2
 from preferredsoundplayer import playsound
+
+
+'''
+매개변수 : 글자 이미지 파일명
+'''
 
 
 def speak(text):
@@ -22,6 +28,12 @@ name=sys.argv[1]            # 글자 이미지 파일 이름을 인자로 넣어
 imgPath="./demoImage/tts/"
 img = imgPath+name  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img_size = os.path.getsize(img)
+
+temp=cv2.imread(img)
+cv2.imshow("samepl",temp)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 
 socket = socket(AF_INET, SOCK_STREAM)
 socket.connect(('127.0.0.1', 9658))

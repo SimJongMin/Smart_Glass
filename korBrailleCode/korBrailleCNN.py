@@ -18,10 +18,10 @@ def dataCreateDiv():
     #Rdy_image.Preset()
 
     #COMMENT : data Generator 테스트, 검증 데이터 생성
-    # train_generator, val_generator = DATAGenerator.data_ready()
+    train_generator, val_generator = DATAGenerator.data_ready()
     # train_generator, val_generator = DATAGenerator.noise_data_ready()
     # train_generator, val_generator = DATAGenerator.capture_data_ready()
-    train_generator, val_generator = DATAGenerator.total_data_ready()
+    # train_generator, val_generator = DATAGenerator.total_data_ready()
     return train_generator, val_generator
 
 
@@ -36,10 +36,10 @@ def modelCreateLoad():
 
     #COMMENT: BrailleNet에 저장된 모델을 불러옴.
     #COMMENT: acc확인
-    # model = Load_model.load_model()
+    model = Load_model.load_model()
     # model = Load_model.load_noise_model()
     # model = Load_model.load_capture_model()
-    model = Load_model.load_total_model()
+    # model = Load_model.load_total_model()
     acc = Load_model.acc_chk(model, val_generator)
     return model
 
@@ -47,7 +47,7 @@ def modelCreateLoad():
 
 def action():
     #COMMENT: 사진 데이터 불러오기, 예측
-    realBraillePicturePath = './demoImage/Braille/라즈베리파이4_14.jpg'
+    realBraillePicturePath = './demoImage/Braille/한성대학교2022캡스톤디자인_29.jpg'
     # realBraillePicturePath='./images/resized_image.jpg'
     
     model=modelCreateLoad()
@@ -69,6 +69,7 @@ def action():
     b.composit()
     print(b.result)
     return b.result
+
 
 def serverAction(image):
     #COMMENT: 사진 데이터 불러오기, 예측

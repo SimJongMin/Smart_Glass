@@ -1,5 +1,8 @@
 from Braille_Translator import unicode
 from Braille_Translator import braille
+# import unicode
+# import braille
+
 
 def trans(li):
     # dot_text = "⠼⠁⠁⠏⠂⠀⠼⠁⠁⠕⠂⠵⠀⠠⠘⠗⠠⠘⠗⠐⠥⠀⠠⠘⠣⠂⠐⠕⠑⠹⠉⠵⠀⠊⠝⠕"
@@ -53,23 +56,23 @@ def trans(li):
                 dtl.pop(0)
             
             if leng == "kor":
-                if len(dtl) >= 2: 
-                    if dtl[0] + dtl[1] in braille.yakeo.keys():
-                        plain_text.append(braille.yakeo[dtl[0] + dtl[1]])
-                        dtl.pop(0)
-                        dtl.pop(0)
-                        continue
-                    # elif dtl[0] + dtl[1] in braille.chosung.keys():
-                    #     plain_text = plain_text + braille.chosung[dtl[0] + dtl[1]]
-                    #     dtl.pop(0)
-                    #     dtl.pop(0)
-                    #     chojong[len(plain_text) - 1] = "초성"
-                    #     continue
-                    elif dtl[0] + dtl[1] in braille.joongsung.keys():
-                        plain_text.append(braille.joongsung[dtl[0] + dtl[1]])
-                        dtl.pop(0)
-                        dtl.pop(0)
-                        continue
+                # if len(dtl) >= 2: 
+                #     if dtl[0] + dtl[1] in braille.yakeo.keys():
+                #         plain_text.append(braille.yakeo[dtl[0] + dtl[1]])
+                #         dtl.pop(0)
+                #         dtl.pop(0)
+                #         continue
+                #     # elif dtl[0] + dtl[1] in braille.chosung.keys():
+                #     #     plain_text = plain_text + braille.chosung[dtl[0] + dtl[1]]
+                #     #     dtl.pop(0)
+                #     #     dtl.pop(0)
+                #     #     chojong[len(plain_text) - 1] = "초성"
+                #     #     continue
+                #     elif dtl[0] + dtl[1] in braille.joongsung.keys():
+                #         plain_text.append(braille.joongsung[dtl[0] + dtl[1]])
+                #         dtl.pop(0)
+                #         dtl.pop(0)
+                #         continue
                 if dtl[0] in braille.yakeo.keys():
                     # print()
                     if len(plain_text) > 0:
@@ -140,6 +143,10 @@ def trans(li):
                         if ptl[i - 1] not in braille.chosung.values():  # 그게 초성이 아니면
                             ptl.insert(i, "ㅇ")  # ㅇ 추가
                             i = i + 1
+            
+            if ptl[i] == "ㅕ" and ptl[i + 1] == "ㅇ" and chojong[k + 1] == "종성":
+                if ptl[i - 1] in ("ㅅ", "ㅆ", "ㅈ", "ㅉ", "ㅊ") and chojong[k - 1] == "초성":
+                    ptl[i] = "ㅓ"
 
         except:
             pass
@@ -152,8 +159,11 @@ def trans(li):
     # print(plain_text)
     print(unicode.join_jamos(plain_text))
     return unicode.join_jamos(plain_text)
-            
+
+
 """
+
+
 ⠊⠗⠚⠒⠑⠟⠈⠍⠁ - 대한민국 ㅇ
 
 ⠨⠣⠽⠠⠾ - 자외선 ㅇ

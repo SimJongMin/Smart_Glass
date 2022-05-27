@@ -3,14 +3,18 @@ from camera import resizing
 from camera import camera_capture
 import sys
 
+'''
+매개 변수 : 점자 이미지에서 점자 개수
+'''
+
 
 # 카메라 함수
-def camera1():
-    camera = PiCamera()
-    camera.start_preview()
-    sleep(3)
-    camera.capture("./demoImage/capture.jpg")  # 경로 수정 필요
-    camera.stop_preview()
+# def camera1():
+#     camera = PiCamera()
+#     camera.start_preview()
+#     sleep(3)
+#     camera.capture("./demoImage/capture.jpg")  # 경로 수정 필요
+#     camera.stop_preview()
 
 
 num = int(sys.argv[1])
