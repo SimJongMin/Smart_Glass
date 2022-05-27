@@ -44,11 +44,10 @@ def modelCreateLoad():
     return model
 
 
-
 def action():
     #COMMENT: 사진 데이터 불러오기, 예측
-    realBraillePicturePath = './demoImage/Braille/한성대학교2022캡스톤디자인_29.jpg'
-    # realBraillePicturePath='./images/resized_image.jpg'
+    # realBraillePicturePath = './demoImage/Braille/인간_43.jpg'
+    realBraillePicturePath='./demoImage/recieved.jpg'
     
     model=modelCreateLoad()
     

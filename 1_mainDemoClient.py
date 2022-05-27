@@ -12,8 +12,8 @@ from camera import resizing
 매개변수 : 점자 이미지 파일명
 '''
 
-filedic = {1: "라즈베리파이4_14.jpg", 2: "소고기입니다_11.jpg", 3: "안녕하세요_8.jpg", 4: "오늘의점심은_12.jpg", 5: "운수좋은날.jpg",
-           6: "인간실격_43.jpg", 5: "점자가인식되었습니다_11.jpg", 6: "하루되세요_9.jpg", 7: "한성대학교2022캡스톤디자인_29.jpg", 8: "행복한_8.jpg"}
+filedic = {1: "라즈베리파이4_14.jpg", 2: "안녕_8.jpg", 3: "운수좋은날_9.jpg",
+           4: "인간_33.jpg", 5: "점자가인식_20.jpg", 6: "한성대학교_29.jpg"}
 
 
 
@@ -30,10 +30,10 @@ def speak(text):
 
 PROTOCOL = 0
 
-key=sys.argv[1]
+key=int(sys.argv[1])
 temp1=filedic[key].split("_")
 res=temp1[1].split(".")
-num=int(res)
+num=int(res[0])
 
 
 
