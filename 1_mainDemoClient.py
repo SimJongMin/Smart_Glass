@@ -30,21 +30,17 @@ def speak(text):
 
 PROTOCOL = 0
 
-# key=sys.argv[1]
-# temp1=filedic[key].split("_")
-# res=temp1[1].split(".")
-# num=int(res)
-num=sys.argv[1]
+key=sys.argv[1]
+temp1=filedic[key].split("_")
+res=temp1[1].split(".")
+num=int(res)
 
 
 
 os.system("libcamera-jpeg -o ./demoImage/capture.jpg")
-# processing.camera_processing("./demoImage/Braille/"+filedic[key])
-# resizing.resizing(num)
-processing.camera_processing("./demoImage/Braille/brailleTest1.jpg")
+processing.camera_processing("./demoImage/Braille/"+filedic[key])
 resizing.resizing(num)
 
-# img = './demoImage/Braille/'+filedic[key]  # 여기에 카메라로 찍은 사진을 넣으면 된다.
 img="./demoImage/Braille/resized_image.jpg"
 img_size = os.path.getsize(img)
 
