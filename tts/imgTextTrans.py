@@ -58,8 +58,8 @@ def transSpeak(imgPath, trans):
 def mainStart(trans):
     # comment: 입력 사진 path
     # path="./demoImage/"
-    path = "./demoImage/tts/"
-    img = "sampleEn.jpg"
+    path = "./tts/"
+    img = "sampleEn8.jpg"
 
     pathImg=path+img
 
@@ -67,6 +67,9 @@ def mainStart(trans):
     print(str)
     speak(str)
     return str
+
+# trans=Translator()
+# mainStart(trans)
 
 def serverMainStart(trans, image):
     # comment: 입력 사진 path
