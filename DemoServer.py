@@ -7,7 +7,7 @@ from googletrans import Translator
 
 server_socket = socket(AF_INET, SOCK_STREAM)
 # IP주소, PORT번호. 이거 데모날에 그쪽 WIFI 주소에 맞춰 바꿔야한다.
-server_socket.bind(('192.168.219.108', 9658))
+server_socket.bind(('192.168.219.106', 9658))
 server_socket.listen()
 
 while True:
