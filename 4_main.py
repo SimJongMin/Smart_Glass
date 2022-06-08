@@ -19,7 +19,7 @@ def speak(text):
 # pyowm 3 버전 기준으로 작성되었음.
 config_dict = get_default_config()
 config_dict['language'] = 'kr'
-apiKey = '9af17afaa6adcac0ef8e83a1f9289626' # 본인의 apiKey
+apiKey = ' ' # 본인의 apiKey
 owm = OWM(apiKey, config_dict)
 mgr = owm.weather_manager() # manager
 
